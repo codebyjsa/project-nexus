@@ -1,0 +1,89 @@
+{
+    "mails": [
+        {
+            "id": "demo-1",
+            "subject": "End Semester Examination Schedule - Winter 2026",
+            "from": "academics@university.edu",
+            "receivedAt": "2026-02-06T10:00:00Z",
+            "originalContent": "Dear Students,\n\nThis is to inform all students that the End Semester Examinations for Winter 2026 will commence from March 15, 2026. The detailed timetable will be uploaded on the university portal by February 20, 2026.\n\nPlease note the following:\n1. Admit cards will be available for download from March 1, 2026\n2. Students with any outstanding dues must clear them before February 28, 2026\n3. The examination will be conducted in offline mode\n4. Seating arrangements will be displayed outside examination halls one day prior\n\nFor any queries, contact the Examination Cell at exams@university.edu\n\nBest regards,\nController of Examinations",
+            "summary": "End Semester Exams start March 15, 2026. Timetable releases Feb 20. Clear dues by Feb 28. Admit cards available from March 1.",
+            "category": "academic",
+            "priority": 5,
+            "deadlines": [
+                {
+                    "date": "2026-02-20",
+                    "description": "Timetable release"
+                },
+                {
+                    "date": "2026-02-28",
+                    "description": "Clear outstanding dues"
+                },
+                {
+                    "date": "2026-03-01",
+                    "description": "Admit cards available"
+                },
+                {
+                    "date": "2026-03-15",
+                    "description": "Exams begin"
+                }
+            ],
+            "actionItems": [
+                "Check portal for timetable on Feb 20",
+                "Clear any pending dues before Feb 28",
+                "Download admit card from March 1"
+            ],
+            "sentiment": "neutral",
+            "isRead": false
+        },
+        {
+            "id": "demo-2",
+            "subject": "🎉 TechFest 2026 - Registrations Open!",
+            "from": "events@university.edu",
+            "receivedAt": "2026-02-05T14:30:00Z",
+            "originalContent": "Hey Techies!\n\nGet ready for the biggest tech extravaganza of the year - TECHFEST 2026! 🚀\n\nDates: February 25-27, 2026\nVenue: Main Campus Auditorium & Tech Block\n\nEvents:\n- Hackathon (24 hrs) - Prize pool: ₹1,00,000\n- Coding Competition\n- Robotics Challenge\n- AI/ML Workshop\n- Gaming Tournament\n\nRegistration Deadline: February 18, 2026\nRegistration Link: techfest.university.edu/register\n\nTeam Size: 2-4 members\nRegistration Fee: ₹500 per team\n\nDon't miss out on this incredible opportunity! Limited slots available.\n\nFor sponsorship queries: techfest@university.edu\n\nLet's innovate together! 💡\n\nTeam TechFest 2026",
+            "summary": "TechFest 2026 from Feb 25-27. Register by Feb 18. ₹500 per team (2-4 members). Hackathon prize pool ₹1 lakh. Register at techfest.university.edu",
+            "category": "event",
+            "priority": 4,
+            "deadlines": [
+                {
+                    "date": "2026-02-18",
+                    "description": "Registration deadline"
+                },
+                {
+                    "date": "2026-02-25",
+                    "description": "TechFest begins"
+                }
+            ],
+            "actionItems": [
+                "Form team of 2-4 members",
+                "Register at techfest.university.edu before Feb 18",
+                "Pay ₹500 registration fee"
+            ],
+            "sentiment": "positive",
+            "isRead": true
+        },
+        {
+            "id": "demo-3",
+            "subject": "URGENT: Library Book Return Notice",
+            "from": "library@university.edu",
+            "receivedAt": "2026-02-04T09:15:00Z",
+            "originalContent": "Dear Student,\n\nURGENT NOTICE\n\nOur records indicate that you have the following overdue book(s):\n- 'Data Structures and Algorithms' (Due: Jan 25, 2026)\n- 'Introduction to Machine Learning' (Due: Jan 28, 2026)\n\nTotal Fine Accumulated: ₹150\n\nPlease return the books immediately to avoid further fines (₹5/day per book).\n\nFailure to return within 7 days will result in:\n1. Library card suspension\n2. Hold on examination admit card\n\nLibrary Timings: 9 AM - 8 PM (Monday to Saturday)\n\nRegards,\nChief Librarian",
+            "summary": "URGENT: 2 overdue library books with ₹150 fine. Return within 7 days or face library suspension and admit card hold.",
+            "category": "urgent",
+            "priority": 5,
+            "deadlines": [
+                {
+                    "date": "2026-02-11",
+                    "description": "Return books to avoid suspension"
+                }
+            ],
+            "actionItems": [
+                "Return 'Data Structures and Algorithms' ASAP",
+                "Return 'Introduction to Machine Learning' ASAP",
+                "Pay ₹150 fine at library counter"
+            ],
+            "sentiment": "negative",
+            "isRead": false
+        }
+    ]
+}
