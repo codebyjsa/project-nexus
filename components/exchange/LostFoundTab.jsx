@@ -6,9 +6,11 @@ import PostForm from './PostForm';
 
 export default function LostFoundTab() {
     const [items, setItems] = useState([]);
-    const [filter, setFilter] = useState('all'); // 'all' | 'lost' | 'found'
     const [showForm, setShowForm] = useState(false);
     const [loading, setLoading] = useState(true);
+    const [filter, setFilter] = useState('all'); // 'all', 'lost', 'found'
+    const [editingItem, setEditingItem] = useState(null);
+    const [isEditing, setIsEditing] = useState(false);
 
     useEffect(() => {
         fetchItems();
@@ -27,15 +29,41 @@ export default function LostFoundTab() {
     };
 
     const handleSubmit = async (formData) => {
-        const response = await fetch('/api/lost-found', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(formData),
-        });
+        if (isEditing && editingItem) {
+            // Update existing item
+            const response = await fetch(`/api/lost-found?id=${editingItem.id}`, {
+                method: 'PUT',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(formData),
+            });
 
-        if (!response.ok) throw new Error('Failed to create item');
+            if (!response.ok) throw new Error('Failed to update item');
+        } else {
+            // Create new item
+            const response = await fetch('/api/lost-found', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(formData),
+            });
+
+            if (!response.ok) throw new Error('Failed to create item');
+        }
 
         await fetchItems();
+        setEditingItem(null);
+        setIsEditing(false);
+    };
+
+    const handleEdit = (item) => {
+        setEditingItem(item);
+        setIsEditing(true);
+        setShowForm(true);
+    };
+
+    const handleCloseForm = () => {
+        setShowForm(false);
+        setEditingItem(null);
+        setIsEditing(false);
     };
 
     const handleDelete = async (id) => {
@@ -78,8 +106,8 @@ export default function LostFoundTab() {
                         key={f}
                         onClick={() => setFilter(f)}
                         className={`px-4 py-2 rounded-xl font-medium transition-all whitespace-nowrap ${filter === f
-                                ? 'bg-blue-600 text-white shadow-lg'
-                                : 'bg-white/80 text-gray-700 hover:bg-gray-100'
+                            ? 'bg-blue-600 text-white shadow-lg'
+                            : 'bg-white/80 text-gray-700 hover:bg-gray-100'
                             }`}
                     >
                         {f === 'all' && `All (${items.length})`}
@@ -100,7 +128,7 @@ export default function LostFoundTab() {
             ) : (
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
                     {filteredItems.map((item) => (
-                        <ItemCard key={item.id} item={item} onDelete={handleDelete} />
+                        <ItemCard key={item.id} item={item} onDelete={handleDelete} onEdit={handleEdit} />
                     ))}
                 </div>
             )}
@@ -110,7 +138,9 @@ export default function LostFoundTab() {
                 <PostForm
                     type="lost-found"
                     onSubmit={handleSubmit}
-                    onClose={() => setShowForm(false)}
+                    onClose={handleCloseForm}
+                    editData={editingItem}
+                    isEditing={isEditing}
                 />
             )}
         </div>

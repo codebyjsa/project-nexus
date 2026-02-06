@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 
-export default function ItemCard({ item, onDelete }) {
+export default function ItemCard({ item, onDelete, onEdit }) {
     const [isDeleting, setIsDeleting] = useState(false);
 
     const handleDelete = async () => {
@@ -25,21 +25,33 @@ export default function ItemCard({ item, onDelete }) {
             <div className="flex items-start justify-between mb-3">
                 <span
                     className={`px-3 py-1 rounded-full text-xs font-semibold ${isLost
-                            ? 'bg-red-100 text-red-700'
-                            : 'bg-green-100 text-green-700'
+                        ? 'bg-red-100 text-red-700'
+                        : 'bg-green-100 text-green-700'
                         }`}
                 >
                     {isLost ? '🔴 Lost' : '🟢 Found'}
                 </span>
-                <button
-                    onClick={handleDelete}
-                    disabled={isDeleting}
-                    className="text-gray-400 hover:text-red-500 transition-colors disabled:opacity-50"
-                >
-                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                    </svg>
-                </button>
+                <div className="flex gap-2">
+                    <button
+                        onClick={() => onEdit(item)}
+                        className="text-gray-400 hover:text-blue-500 transition-colors"
+                        title="Edit item"
+                    >
+                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+                        </svg>
+                    </button>
+                    <button
+                        onClick={handleDelete}
+                        disabled={isDeleting}
+                        className="text-gray-400 hover:text-red-500 transition-colors disabled:opacity-50"
+                        title="Delete item"
+                    >
+                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
             </div>
 
             {/* Title */}

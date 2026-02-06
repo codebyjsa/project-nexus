@@ -66,6 +66,53 @@ export async function POST(request) {
     }
 }
 
+// PUT - Update existing ride by ID
+export async function PUT(request) {
+    try {
+        const { searchParams } = new URL(request.url);
+        const id = searchParams.get('id');
+
+        if (!id) {
+            return NextResponse.json(
+                { error: 'Ride ID is required' },
+                { status: 400 }
+            );
+        }
+
+        const body = await request.json();
+        const rides = await readData();
+
+        const rideIndex = rides.findIndex(ride => ride.id === id);
+
+        if (rideIndex === -1) {
+            return NextResponse.json(
+                { error: 'Ride not found' },
+                { status: 404 }
+            );
+        }
+
+        // Update ride while preserving id and createdAt
+        rides[rideIndex] = {
+            ...rides[rideIndex],
+            destination: body.destination,
+            departureTime: body.departureTime,
+            seatsAvailable: body.seatsAvailable,
+            costEstimate: body.costEstimate,
+            userName: body.userName,
+            updatedAt: new Date().toISOString(),
+        };
+
+        await writeData(rides);
+
+        return NextResponse.json(rides[rideIndex]);
+    } catch (error) {
+        return NextResponse.json(
+            { error: 'Failed to update ride' },
+            { status: 500 }
+        );
+    }
+}
+
 // DELETE - Remove ride by ID
 export async function DELETE(request) {
     try {

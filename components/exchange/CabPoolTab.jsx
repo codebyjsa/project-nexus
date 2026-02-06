@@ -8,6 +8,8 @@ export default function CabPoolTab() {
     const [rides, setRides] = useState([]);
     const [showForm, setShowForm] = useState(false);
     const [loading, setLoading] = useState(true);
+    const [editingRide, setEditingRide] = useState(null);
+    const [isEditing, setIsEditing] = useState(false);
 
     useEffect(() => {
         fetchRides();
@@ -26,15 +28,41 @@ export default function CabPoolTab() {
     };
 
     const handleSubmit = async (formData) => {
-        const response = await fetch('/api/cabpool', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(formData),
-        });
+        if (isEditing && editingRide) {
+            // Update existing ride
+            const response = await fetch(`/api/cabpool?id=${editingRide.id}`, {
+                method: 'PUT',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(formData),
+            });
 
-        if (!response.ok) throw new Error('Failed to create ride');
+            if (!response.ok) throw new Error('Failed to update ride');
+        } else {
+            // Create new ride
+            const response = await fetch('/api/cabpool', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(formData),
+            });
+
+            if (!response.ok) throw new Error('Failed to create ride');
+        }
 
         await fetchRides();
+        setEditingRide(null);
+        setIsEditing(false);
+    };
+
+    const handleEdit = (ride) => {
+        setEditingRide(ride);
+        setIsEditing(true);
+        setShowForm(true);
+    };
+
+    const handleCloseForm = () => {
+        setShowForm(false);
+        setEditingRide(null);
+        setIsEditing(false);
     };
 
     const handleDelete = async (id) => {
@@ -76,7 +104,7 @@ export default function CabPoolTab() {
             ) : (
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
                     {rides.map((ride) => (
-                        <RideCard key={ride.id} ride={ride} onDelete={handleDelete} />
+                        <RideCard key={ride.id} ride={ride} onDelete={handleDelete} onEdit={handleEdit} />
                     ))}
                 </div>
             )}
@@ -86,7 +114,9 @@ export default function CabPoolTab() {
                 <PostForm
                     type="cabpool"
                     onSubmit={handleSubmit}
-                    onClose={() => setShowForm(false)}
+                    onClose={handleCloseForm}
+                    editData={editingRide}
+                    isEditing={isEditing}
                 />
             )}
         </div>

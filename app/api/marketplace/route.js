@@ -63,6 +63,54 @@ export async function POST(request) {
     }
 }
 
+// PUT - Update existing product by ID
+export async function PUT(request) {
+    try {
+        const { searchParams } = new URL(request.url);
+        const id = searchParams.get('id');
+
+        if (!id) {
+            return NextResponse.json(
+                { error: 'Product ID is required' },
+                { status: 400 }
+            );
+        }
+
+        const body = await request.json();
+        const items = await readData();
+
+        const itemIndex = items.findIndex(item => item.id === id);
+
+        if (itemIndex === -1) {
+            return NextResponse.json(
+                { error: 'Product not found' },
+                { status: 404 }
+            );
+        }
+
+        // Update product while preserving id and createdAt
+        items[itemIndex] = {
+            ...items[itemIndex],
+            title: body.title,
+            description: body.description,
+            price: body.price,
+            category: body.category,
+            condition: body.condition,
+            userName: body.userName,
+            updatedAt: new Date().toISOString(),
+        };
+
+        await writeData(items);
+
+        return NextResponse.json(items[itemIndex]);
+    } catch (error) {
+        return NextResponse.json(
+            { error: 'Failed to update product' },
+            { status: 500 }
+        );
+    }
+}
+
 // DELETE - Remove product by ID
 export async function DELETE(request) {
     try {

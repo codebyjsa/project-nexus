@@ -8,6 +8,8 @@ export default function MarketplaceTab() {
     const [products, setProducts] = useState([]);
     const [showForm, setShowForm] = useState(false);
     const [loading, setLoading] = useState(true);
+    const [editingProduct, setEditingProduct] = useState(null);
+    const [isEditing, setIsEditing] = useState(false);
 
     useEffect(() => {
         fetchProducts();
@@ -26,15 +28,41 @@ export default function MarketplaceTab() {
     };
 
     const handleSubmit = async (formData) => {
-        const response = await fetch('/api/marketplace', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(formData),
-        });
+        if (isEditing && editingProduct) {
+            // Update existing product
+            const response = await fetch(`/api/marketplace?id=${editingProduct.id}`, {
+                method: 'PUT',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(formData),
+            });
 
-        if (!response.ok) throw new Error('Failed to create product');
+            if (!response.ok) throw new Error('Failed to update product');
+        } else {
+            // Create new product
+            const response = await fetch('/api/marketplace', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(formData),
+            });
+
+            if (!response.ok) throw new Error('Failed to create product');
+        }
 
         await fetchProducts();
+        setEditingProduct(null);
+        setIsEditing(false);
+    };
+
+    const handleEdit = (product) => {
+        setEditingProduct(product);
+        setIsEditing(true);
+        setShowForm(true);
+    };
+
+    const handleCloseForm = () => {
+        setShowForm(false);
+        setEditingProduct(null);
+        setIsEditing(false);
     };
 
     const handleDelete = async (id) => {
@@ -76,7 +104,7 @@ export default function MarketplaceTab() {
             ) : (
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
                     {products.map((product) => (
-                        <ProductCard key={product.id} product={product} onDelete={handleDelete} />
+                        <ProductCard key={product.id} product={product} onDelete={handleDelete} onEdit={handleEdit} />
                     ))}
                 </div>
             )}
@@ -86,7 +114,9 @@ export default function MarketplaceTab() {
                 <PostForm
                     type="marketplace"
                     onSubmit={handleSubmit}
-                    onClose={() => setShowForm(false)}
+                    onClose={handleCloseForm}
+                    editData={editingProduct}
+                    isEditing={isEditing}
                 />
             )}
         </div>
