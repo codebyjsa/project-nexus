@@ -1,0 +1,353 @@
+{
+    "menus": [
+        {
+            "id": "menu-2026-02-06",
+            "date": "2026-02-06",
+            "day": "Thursday",
+            "meals": {
+                "breakfast": {
+                    "time": "07:30 - 09:30",
+                    "items": [
+                        {
+                            "name": "Aloo Paratha",
+                            "type": "veg",
+                            "allergens": [
+                                "gluten"
+                            ]
+                        },
+                        {
+                            "name": "Curd",
+                            "type": "veg",
+                            "allergens": [
+                                "dairy"
+                            ]
+                        },
+                        {
+                            "name": "Pickle",
+                            "type": "veg",
+                            "allergens": []
+                        },
+                        {
+                            "name": "Bread & Butter",
+                            "type": "veg",
+                            "allergens": [
+                                "gluten",
+                                "dairy"
+                            ]
+                        },
+                        {
+                            "name": "Cornflakes with Milk",
+                            "type": "veg",
+                            "allergens": [
+                                "dairy"
+                            ]
+                        },
+                        {
+                            "name": "Banana",
+                            "type": "veg",
+                            "allergens": []
+                        },
+                        {
+                            "name": "Tea/Coffee",
+                            "type": "veg",
+                            "allergens": [
+                                "dairy"
+                            ]
+                        }
+                    ]
+                },
+                "lunch": {
+                    "time": "12:30 - 14:30",
+                    "items": [
+                        {
+                            "name": "Jeera Rice",
+                            "type": "veg",
+                            "allergens": []
+                        },
+                        {
+                            "name": "Dal Tadka",
+                            "type": "veg",
+                            "allergens": []
+                        },
+                        {
+                            "name": "Paneer Butter Masala",
+                            "type": "veg",
+                            "allergens": [
+                                "dairy"
+                            ]
+                        },
+                        {
+                            "name": "Chicken Curry",
+                            "type": "non-veg",
+                            "allergens": []
+                        },
+                        {
+                            "name": "Roti",
+                            "type": "veg",
+                            "allergens": [
+                                "gluten"
+                            ]
+                        },
+                        {
+                            "name": "Green Salad",
+                            "type": "veg",
+                            "allergens": []
+                        },
+                        {
+                            "name": "Raita",
+                            "type": "veg",
+                            "allergens": [
+                                "dairy"
+                            ]
+                        },
+                        {
+                            "name": "Gulab Jamun",
+                            "type": "veg",
+                            "allergens": [
+                                "dairy",
+                                "gluten"
+                            ]
+                        }
+                    ]
+                },
+                "snacks": {
+                    "time": "17:00 - 18:00",
+                    "items": [
+                        {
+                            "name": "Samosa",
+                            "type": "veg",
+                            "allergens": [
+                                "gluten"
+                            ]
+                        },
+                        {
+                            "name": "Green Chutney",
+                            "type": "veg",
+                            "allergens": []
+                        },
+                        {
+                            "name": "Tea",
+                            "type": "veg",
+                            "allergens": [
+                                "dairy"
+                            ]
+                        }
+                    ]
+                },
+                "dinner": {
+                    "time": "19:30 - 21:30",
+                    "items": [
+                        {
+                            "name": "Steamed Rice",
+                            "type": "veg",
+                            "allergens": []
+                        },
+                        {
+                            "name": "Dal Makhani",
+                            "type": "veg",
+                            "allergens": [
+                                "dairy"
+                            ]
+                        },
+                        {
+                            "name": "Mix Veg",
+                            "type": "veg",
+                            "allergens": []
+                        },
+                        {
+                            "name": "Egg Curry",
+                            "type": "non-veg",
+                            "allergens": [
+                                "egg"
+                            ]
+                        },
+                        {
+                            "name": "Chapati",
+                            "type": "veg",
+                            "allergens": [
+                                "gluten"
+                            ]
+                        },
+                        {
+                            "name": "Papad",
+                            "type": "veg",
+                            "allergens": []
+                        },
+                        {
+                            "name": "Ice Cream",
+                            "type": "veg",
+                            "allergens": [
+                                "dairy"
+                            ]
+                        }
+                    ]
+                }
+            }
+        },
+        {
+            "id": "menu-2026-02-07",
+            "date": "2026-02-07",
+            "day": "Friday",
+            "meals": {
+                "breakfast": {
+                    "time": "07:30 - 09:30",
+                    "items": [
+                        {
+                            "name": "Poha",
+                            "type": "veg",
+                            "allergens": []
+                        },
+                        {
+                            "name": "Boiled Eggs",
+                            "type": "non-veg",
+                            "allergens": [
+                                "egg"
+                            ]
+                        },
+                        {
+                            "name": "Bread & Jam",
+                            "type": "veg",
+                            "allergens": [
+                                "gluten"
+                            ]
+                        },
+                        {
+                            "name": "Milk",
+                            "type": "veg",
+                            "allergens": [
+                                "dairy"
+                            ]
+                        },
+                        {
+                            "name": "Apple",
+                            "type": "veg",
+                            "allergens": []
+                        },
+                        {
+                            "name": "Tea/Coffee",
+                            "type": "veg",
+                            "allergens": [
+                                "dairy"
+                            ]
+                        }
+                    ]
+                },
+                "lunch": {
+                    "time": "12:30 - 14:30",
+                    "items": [
+                        {
+                            "name": "Biryani Rice",
+                            "type": "veg",
+                            "allergens": []
+                        },
+                        {
+                            "name": "Rajma",
+                            "type": "veg",
+                            "allergens": []
+                        },
+                        {
+                            "name": "Aloo Gobi",
+                            "type": "veg",
+                            "allergens": []
+                        },
+                        {
+                            "name": "Fish Curry",
+                            "type": "non-veg",
+                            "allergens": [
+                                "fish"
+                            ]
+                        },
+                        {
+                            "name": "Naan",
+                            "type": "veg",
+                            "allergens": [
+                                "gluten",
+                                "dairy"
+                            ]
+                        },
+                        {
+                            "name": "Onion Salad",
+                            "type": "veg",
+                            "allergens": []
+                        },
+                        {
+                            "name": "Kheer",
+                            "type": "veg",
+                            "allergens": [
+                                "dairy"
+                            ]
+                        }
+                    ]
+                },
+                "snacks": {
+                    "time": "17:00 - 18:00",
+                    "items": [
+                        {
+                            "name": "Bread Pakora",
+                            "type": "veg",
+                            "allergens": [
+                                "gluten"
+                            ]
+                        },
+                        {
+                            "name": "Ketchup",
+                            "type": "veg",
+                            "allergens": []
+                        },
+                        {
+                            "name": "Tea",
+                            "type": "veg",
+                            "allergens": [
+                                "dairy"
+                            ]
+                        }
+                    ]
+                },
+                "dinner": {
+                    "time": "19:30 - 21:30",
+                    "items": [
+                        {
+                            "name": "Plain Rice",
+                            "type": "veg",
+                            "allergens": []
+                        },
+                        {
+                            "name": "Chana Dal",
+                            "type": "veg",
+                            "allergens": []
+                        },
+                        {
+                            "name": "Bhindi Fry",
+                            "type": "veg",
+                            "allergens": []
+                        },
+                        {
+                            "name": "Mutton Curry",
+                            "type": "non-veg",
+                            "allergens": []
+                        },
+                        {
+                            "name": "Paratha",
+                            "type": "veg",
+                            "allergens": [
+                                "gluten"
+                            ]
+                        },
+                        {
+                            "name": "Pickle",
+                            "type": "veg",
+                            "allergens": []
+                        },
+                        {
+                            "name": "Fruit Custard",
+                            "type": "veg",
+                            "allergens": [
+                                "dairy"
+                            ]
+                        }
+                    ]
+                }
+            }
+        }
+    ]
+}

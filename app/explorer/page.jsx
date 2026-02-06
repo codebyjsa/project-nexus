@@ -1,23 +1,23 @@
 /**
- * Academics Page - Placeholder
+ * Explorer Page - Placeholder
  * Owner: SEHAJ
- * Features: Timetable, Grades
+ * Features: Nearby Places
  */
 
 'use client';
 
 import Card from '@/components/ui/Card';
 
-export default function AcademicsPage() {
+export default function ExplorerPage() {
     return (
         <div className="container pt-lg">
             <div className="mb-lg">
                 <h1 className="h2 flex items-center gap-sm">
-                    <span>📚</span>
-                    <span>Academics</span>
+                    <span>🗺️</span>
+                    <span>Explorer</span>
                 </h1>
                 <p className="text-secondary">
-                    Timetable, Grades & Courses
+                    Discover nearby places and hangouts
                 </p>
             </div>
 
@@ -28,9 +28,9 @@ export default function AcademicsPage() {
                     This section is being built by <strong>Sehaj</strong>
                 </p>
                 <div className="flex justify-center gap-md flex-wrap">
-                    <span className="badge badge-info">📅 Timetable</span>
-                    <span className="badge badge-warning">📊 Grades</span>
-                    <span className="badge badge-success">📖 Courses</span>
+                    <span className="badge badge-info">🍕 Food Spots</span>
+                    <span className="badge badge-warning">☕ Cafes</span>
+                    <span className="badge badge-success">🎮 Entertainment</span>
                 </div>
             </Card>
         </div>
