@@ -119,17 +119,67 @@ function formatMails(mailsData) {
         .join('\n');
 }
 
+// Format places/explorer data for context
+function formatPlaces(placesData) {
+    if (!placesData?.places?.length) return 'No places data available.';
+
+    // Group places by category
+    const categories = {};
+    placesData.places.forEach((place) => {
+        if (!categories[place.category]) {
+            categories[place.category] = [];
+        }
+        categories[place.category].push(place);
+    });
+
+    const categoryEmojis = {
+        food: '🍽️',
+        cafe: '☕',
+        nature: '🌿',
+        entertainment: '🎮',
+        shopping: '🛍️',
+        spiritual: '🙏',
+    };
+
+    let output = '';
+    for (const [category, places] of Object.entries(categories)) {
+        const emoji = categoryEmojis[category] || '📍';
+        output += `\n${emoji} ${category.toUpperCase()}:\n`;
+        places.forEach((place) => {
+            output += `• ${place.name} (⭐${place.rating}, ${place.distance}km away)\n`;
+            output += `  📍 ${place.location.address}\n`;
+            output += `  📝 ${place.description}\n`;
+            output += `  💰 Price: ${place.priceRange}`;
+            if (place.studentDiscount) {
+                output += ` | 🎓 Student Discount: ${place.discountDetails || 'Available'}`;
+            }
+            output += '\n';
+            output += `  🏷️ Vibes: ${place.vibes.join(', ')}\n`;
+
+            // Include recent reviews
+            if (place.reviews?.length > 0) {
+                const recentReview = place.reviews[0];
+                output += `  💬 Recent: "${recentReview.text}" - ${recentReview.userName}\n`;
+            }
+        });
+    }
+    return output;
+}
+
 // Build comprehensive system prompt with app data
 function buildSystemPrompt(appData) {
     const messMenuContext = formatTodayMenu(appData.messMenu);
     const mailsContext = formatMails(appData.mails);
+    const placesContext = formatPlaces(appData.places);
 
     return `You are Nexus AI, the intelligent campus assistant for Project Nexus - the ultimate college companion app. You have COMPLETE knowledge of all app data and can answer ANY question about campus life.
 
 🎯 YOUR CAPABILITIES:
 - You know ALL the mess menu details (items, timings, dietary info, allergens)
 - You know ALL important emails, their summaries, deadlines, and action items
-- You can help with timetables, places, marketplace, cab pooling, and lost & found
+- You know ALL nearby places: restaurants, cafes, nature spots, entertainment, shopping, spiritual places
+- You know ratings, reviews, student discounts, operating hours, prices, and vibes for every place
+- You can help with timetables, marketplace, cab pooling, and lost & found
 - You provide accurate, helpful, and friendly responses
 
 📋 CURRENT APP DATA:
@@ -139,6 +189,9 @@ ${messMenuContext}
 
 === IMPORTANT EMAILS & NOTIFICATIONS ===
 ${mailsContext}
+
+=== EXPLORER: NEARBY PLACES & HANGOUTS ===
+${placesContext}
 
 === APP FEATURES ===
 1. Daily Pulse (Mail Summarizer + Mess Menu)
@@ -157,7 +210,10 @@ ${mailsContext}
 💡 RESPONSE GUIDELINES:
 - For mess menu questions: Give exact items, timings, and dietary info
 - For email questions: Provide summaries, deadlines, and required actions
-- For general questions: Be helpful and informative
+- For places/hangout questions: Recommend based on vibes, budget, distance, ratings, and student discounts
+- For "where to eat/study/chill" questions: Suggest multiple options with pros/cons
+- For date spot questions: Recommend romantic places with ambiance details
+- For budget-friendly options: Highlight student discounts and price ranges
 - Always be accurate - never make up information not in the data
 - Keep responses conversational but informative`;
 }

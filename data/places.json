@@ -1,3 +1,966 @@
 {
-    "places": []
+    "places": [
+        {
+            "id": "place-001",
+            "name": "Haveli Restaurant",
+            "category": "food",
+            "description": "Authentic Punjabi cuisine in a traditional haveli setting. Famous for their butter chicken, dal makhani, and fresh tandoori rotis. A favorite among students for weekend family dinners.",
+            "vibes": [
+                "family-friendly",
+                "traditional",
+                "celebration"
+            ],
+            "rating": 4.5,
+            "reviewCount": 127,
+            "location": {
+                "lat": 30.9660,
+                "lng": 76.5270,
+                "address": "GT Road, Near Bus Stand, Rupnagar"
+            },
+            "distance": 2.3,
+            "operatingHours": {
+                "monday": {
+                    "open": "11:00",
+                    "close": "23:00"
+                },
+                "tuesday": {
+                    "open": "11:00",
+                    "close": "23:00"
+                },
+                "wednesday": {
+                    "open": "11:00",
+                    "close": "23:00"
+                },
+                "thursday": {
+                    "open": "11:00",
+                    "close": "23:00"
+                },
+                "friday": {
+                    "open": "11:00",
+                    "close": "23:30"
+                },
+                "saturday": {
+                    "open": "11:00",
+                    "close": "23:30"
+                },
+                "sunday": {
+                    "open": "11:00",
+                    "close": "23:00"
+                }
+            },
+            "phone": "+91-9876543210",
+            "photos": [
+                "/places/haveli-1.jpg",
+                "/places/haveli-2.jpg"
+            ],
+            "studentDiscount": true,
+            "discountDetails": "10% off on showing college ID",
+            "priceRange": "₹₹",
+            "reviews": [
+                {
+                    "id": "rev-001",
+                    "userId": "user-001",
+                    "userName": "Rahul S.",
+                    "rating": 5,
+                    "text": "Best butter chicken in Rupnagar! The ambiance is amazing and staff is very friendly.",
+                    "date": "2026-01-15T14:30:00Z"
+                },
+                {
+                    "id": "rev-002",
+                    "userId": "user-002",
+                    "userName": "Priya M.",
+                    "rating": 4,
+                    "text": "Good food but can get crowded on weekends. Book in advance!",
+                    "date": "2026-01-20T18:45:00Z"
+                }
+            ]
+        },
+        {
+            "id": "place-002",
+            "name": "Chai Sutta Bar",
+            "category": "cafe",
+            "description": "Popular hangout spot for college students. Known for their unique chai varieties and affordable snacks. Free WiFi and chill vibes make it perfect for casual study sessions.",
+            "vibes": [
+                "study-friendly",
+                "budget",
+                "chill"
+            ],
+            "rating": 4.2,
+            "reviewCount": 234,
+            "location": {
+                "lat": 30.9685,
+                "lng": 76.5295,
+                "address": "College Road, Rupnagar"
+            },
+            "distance": 0.8,
+            "operatingHours": {
+                "monday": {
+                    "open": "09:00",
+                    "close": "23:00"
+                },
+                "tuesday": {
+                    "open": "09:00",
+                    "close": "23:00"
+                },
+                "wednesday": {
+                    "open": "09:00",
+                    "close": "23:00"
+                },
+                "thursday": {
+                    "open": "09:00",
+                    "close": "23:00"
+                },
+                "friday": {
+                    "open": "09:00",
+                    "close": "00:00"
+                },
+                "saturday": {
+                    "open": "09:00",
+                    "close": "00:00"
+                },
+                "sunday": {
+                    "open": "10:00",
+                    "close": "23:00"
+                }
+            },
+            "phone": "+91-9876543211",
+            "photos": [
+                "/places/chai-sutta-1.jpg"
+            ],
+            "studentDiscount": true,
+            "discountDetails": "15% off for IIT students",
+            "priceRange": "₹",
+            "reviews": [
+                {
+                    "id": "rev-003",
+                    "userId": "user-003",
+                    "userName": "Amit K.",
+                    "rating": 4,
+                    "text": "Perfect place to chill with friends. Kulhad chai is a must try!",
+                    "date": "2026-01-25T16:20:00Z"
+                }
+            ]
+        },
+        {
+            "id": "place-003",
+            "name": "The Study Cafe",
+            "category": "cafe",
+            "description": "Quiet cafe designed for students. Individual study pods, charging points, and excellent coffee. Perfect for exam prep and project work.",
+            "vibes": [
+                "study-friendly",
+                "quiet",
+                "productive"
+            ],
+            "rating": 4.7,
+            "reviewCount": 89,
+            "location": {
+                "lat": 30.9670,
+                "lng": 76.5280,
+                "address": "Near IIT Gate, Rupnagar"
+            },
+            "distance": 0.5,
+            "operatingHours": {
+                "monday": {
+                    "open": "07:00",
+                    "close": "22:00"
+                },
+                "tuesday": {
+                    "open": "07:00",
+                    "close": "22:00"
+                },
+                "wednesday": {
+                    "open": "07:00",
+                    "close": "22:00"
+                },
+                "thursday": {
+                    "open": "07:00",
+                    "close": "22:00"
+                },
+                "friday": {
+                    "open": "07:00",
+                    "close": "22:00"
+                },
+                "saturday": {
+                    "open": "08:00",
+                    "close": "20:00"
+                },
+                "sunday": {
+                    "open": "08:00",
+                    "close": "20:00"
+                }
+            },
+            "phone": "+91-9876543212",
+            "photos": [
+                "/places/study-cafe-1.jpg",
+                "/places/study-cafe-2.jpg"
+            ],
+            "studentDiscount": true,
+            "discountDetails": "Free coffee refill for 3+ hour sessions",
+            "priceRange": "₹₹",
+            "reviews": []
+        },
+        {
+            "id": "place-004",
+            "name": "Bhatura King",
+            "category": "food",
+            "description": "The go-to place for chole bhature in Ropar. Huge portions at student-friendly prices. Their lassi is legendary!",
+            "vibes": [
+                "budget",
+                "quick-bite",
+                "local-favorite"
+            ],
+            "rating": 4.4,
+            "reviewCount": 312,
+            "location": {
+                "lat": 30.9645,
+                "lng": 76.5250,
+                "address": "Main Market, Rupnagar"
+            },
+            "distance": 3.1,
+            "operatingHours": {
+                "monday": {
+                    "open": "08:00",
+                    "close": "16:00"
+                },
+                "tuesday": {
+                    "open": "08:00",
+                    "close": "16:00"
+                },
+                "wednesday": {
+                    "open": "08:00",
+                    "close": "16:00"
+                },
+                "thursday": {
+                    "open": "08:00",
+                    "close": "16:00"
+                },
+                "friday": {
+                    "open": "08:00",
+                    "close": "16:00"
+                },
+                "saturday": {
+                    "open": "08:00",
+                    "close": "16:00"
+                },
+                "sunday": {
+                    "open": "08:00",
+                    "close": "14:00"
+                }
+            },
+            "phone": "+91-9876543213",
+            "photos": [
+                "/places/bhatura-1.jpg"
+            ],
+            "studentDiscount": false,
+            "priceRange": "₹",
+            "reviews": [
+                {
+                    "id": "rev-004",
+                    "userId": "user-004",
+                    "userName": "Deepak R.",
+                    "rating": 5,
+                    "text": "MASSIVE bhaturas! One plate is enough for two people. Must visit!",
+                    "date": "2026-02-01T11:15:00Z"
+                }
+            ]
+        },
+        {
+            "id": "place-005",
+            "name": "Ropar Wetland",
+            "category": "nature",
+            "description": "Ramsar protected wetland site at the confluence of Sutlej River. Perfect for bird watching, photography, and peaceful walks. Over 100 bird species spotted here!",
+            "vibes": [
+                "peaceful",
+                "nature",
+                "photography"
+            ],
+            "rating": 4.6,
+            "reviewCount": 178,
+            "location": {
+                "lat": 30.9720,
+                "lng": 76.5100,
+                "address": "Ropar Wetland, Near Headworks"
+            },
+            "distance": 5.2,
+            "operatingHours": {
+                "monday": {
+                    "open": "06:00",
+                    "close": "18:00"
+                },
+                "tuesday": {
+                    "open": "06:00",
+                    "close": "18:00"
+                },
+                "wednesday": {
+                    "open": "06:00",
+                    "close": "18:00"
+                },
+                "thursday": {
+                    "open": "06:00",
+                    "close": "18:00"
+                },
+                "friday": {
+                    "open": "06:00",
+                    "close": "18:00"
+                },
+                "saturday": {
+                    "open": "06:00",
+                    "close": "18:00"
+                },
+                "sunday": {
+                    "open": "06:00",
+                    "close": "18:00"
+                }
+            },
+            "phone": null,
+            "photos": [
+                "/places/wetland-1.jpg",
+                "/places/wetland-2.jpg",
+                "/places/wetland-3.jpg"
+            ],
+            "studentDiscount": false,
+            "priceRange": "Free",
+            "reviews": [
+                {
+                    "id": "rev-005",
+                    "userId": "user-005",
+                    "userName": "Simran G.",
+                    "rating": 5,
+                    "text": "Breathtaking place! Best visited early morning for bird watching. Saw kingfishers!",
+                    "date": "2026-01-28T07:30:00Z"
+                }
+            ]
+        },
+        {
+            "id": "place-006",
+            "name": "Game Zone Arena",
+            "category": "entertainment",
+            "description": "Gaming cafe with PS5, Xbox, and high-end PC setups. Perfect for weekend gaming sessions with friends. Also has pool tables and foosball.",
+            "vibes": [
+                "fun",
+                "group-hangout",
+                "gaming"
+            ],
+            "rating": 4.3,
+            "reviewCount": 156,
+            "location": {
+                "lat": 30.9655,
+                "lng": 76.5265,
+                "address": "City Center Mall, Rupnagar"
+            },
+            "distance": 2.8,
+            "operatingHours": {
+                "monday": {
+                    "open": "12:00",
+                    "close": "22:00"
+                },
+                "tuesday": {
+                    "open": "12:00",
+                    "close": "22:00"
+                },
+                "wednesday": {
+                    "open": "12:00",
+                    "close": "22:00"
+                },
+                "thursday": {
+                    "open": "12:00",
+                    "close": "22:00"
+                },
+                "friday": {
+                    "open": "12:00",
+                    "close": "00:00"
+                },
+                "saturday": {
+                    "open": "11:00",
+                    "close": "00:00"
+                },
+                "sunday": {
+                    "open": "11:00",
+                    "close": "22:00"
+                }
+            },
+            "phone": "+91-9876543214",
+            "photos": [
+                "/places/gamezone-1.jpg"
+            ],
+            "studentDiscount": true,
+            "discountDetails": "20% off on weekday afternoons",
+            "priceRange": "₹₹",
+            "reviews": []
+        },
+        {
+            "id": "place-007",
+            "name": "Sunset Point",
+            "category": "nature",
+            "description": "Hidden gem atop the hill near campus. Stunning sunset views over the Shivalik range. Popular spot for evening walks and photography.",
+            "vibes": [
+                "date-spot",
+                "scenic",
+                "peaceful"
+            ],
+            "rating": 4.8,
+            "reviewCount": 245,
+            "location": {
+                "lat": 30.9700,
+                "lng": 76.5320,
+                "address": "Hill Road, Behind IIT Campus"
+            },
+            "distance": 1.2,
+            "operatingHours": {
+                "monday": {
+                    "open": "00:00",
+                    "close": "23:59"
+                },
+                "tuesday": {
+                    "open": "00:00",
+                    "close": "23:59"
+                },
+                "wednesday": {
+                    "open": "00:00",
+                    "close": "23:59"
+                },
+                "thursday": {
+                    "open": "00:00",
+                    "close": "23:59"
+                },
+                "friday": {
+                    "open": "00:00",
+                    "close": "23:59"
+                },
+                "saturday": {
+                    "open": "00:00",
+                    "close": "23:59"
+                },
+                "sunday": {
+                    "open": "00:00",
+                    "close": "23:59"
+                }
+            },
+            "phone": null,
+            "photos": [
+                "/places/sunset-1.jpg",
+                "/places/sunset-2.jpg"
+            ],
+            "studentDiscount": false,
+            "priceRange": "Free",
+            "reviews": [
+                {
+                    "id": "rev-006",
+                    "userId": "user-006",
+                    "userName": "Vikram S.",
+                    "rating": 5,
+                    "text": "Best sunset views in Ropar! Go around 5:30 PM for magical colors.",
+                    "date": "2026-01-30T18:00:00Z"
+                }
+            ]
+        },
+        {
+            "id": "place-008",
+            "name": "Stationary Hub",
+            "category": "shopping",
+            "description": "One-stop shop for all academic needs. Notebooks, lab equipment, printouts, and project materials. Best prices in Ropar for students.",
+            "vibes": [
+                "convenient",
+                "budget",
+                "essential"
+            ],
+            "rating": 4.1,
+            "reviewCount": 89,
+            "location": {
+                "lat": 30.9665,
+                "lng": 76.5275,
+                "address": "Near College Gate, Rupnagar"
+            },
+            "distance": 0.3,
+            "operatingHours": {
+                "monday": {
+                    "open": "09:00",
+                    "close": "21:00"
+                },
+                "tuesday": {
+                    "open": "09:00",
+                    "close": "21:00"
+                },
+                "wednesday": {
+                    "open": "09:00",
+                    "close": "21:00"
+                },
+                "thursday": {
+                    "open": "09:00",
+                    "close": "21:00"
+                },
+                "friday": {
+                    "open": "09:00",
+                    "close": "21:00"
+                },
+                "saturday": {
+                    "open": "09:00",
+                    "close": "20:00"
+                },
+                "sunday": {
+                    "open": "10:00",
+                    "close": "18:00"
+                }
+            },
+            "phone": "+91-9876543215",
+            "photos": [
+                "/places/stationary-1.jpg"
+            ],
+            "studentDiscount": true,
+            "discountDetails": "Bulk order discounts available",
+            "priceRange": "₹",
+            "reviews": []
+        },
+        {
+            "id": "place-009",
+            "name": "Pizza Point",
+            "category": "food",
+            "description": "Late-night pizza delivery favorite. Customizable pizzas with generous toppings. Their garlic bread is to die for!",
+            "vibes": [
+                "late-night",
+                "delivery",
+                "comfort-food"
+            ],
+            "rating": 4.0,
+            "reviewCount": 198,
+            "location": {
+                "lat": 30.9640,
+                "lng": 76.5260,
+                "address": "Market Road, Rupnagar"
+            },
+            "distance": 2.5,
+            "operatingHours": {
+                "monday": {
+                    "open": "11:00",
+                    "close": "23:30"
+                },
+                "tuesday": {
+                    "open": "11:00",
+                    "close": "23:30"
+                },
+                "wednesday": {
+                    "open": "11:00",
+                    "close": "23:30"
+                },
+                "thursday": {
+                    "open": "11:00",
+                    "close": "23:30"
+                },
+                "friday": {
+                    "open": "11:00",
+                    "close": "01:00"
+                },
+                "saturday": {
+                    "open": "11:00",
+                    "close": "01:00"
+                },
+                "sunday": {
+                    "open": "11:00",
+                    "close": "23:30"
+                }
+            },
+            "phone": "+91-9876543216",
+            "photos": [
+                "/places/pizza-1.jpg"
+            ],
+            "studentDiscount": true,
+            "discountDetails": "Free delivery for orders above ₹300",
+            "priceRange": "₹₹",
+            "reviews": [
+                {
+                    "id": "rev-007",
+                    "userId": "user-007",
+                    "userName": "Neha P.",
+                    "rating": 4,
+                    "text": "Our go-to for late night study session cravings. Fast delivery!",
+                    "date": "2026-02-03T23:45:00Z"
+                }
+            ]
+        },
+        {
+            "id": "place-010",
+            "name": "Gurudwara Bhatha Sahib",
+            "category": "spiritual",
+            "description": "Historic Gurudwara with peaceful vibes. Free langar available daily. A serene place for reflection and spiritual connection.",
+            "vibes": [
+                "spiritual",
+                "peaceful",
+                "heritage"
+            ],
+            "rating": 4.9,
+            "reviewCount": 312,
+            "location": {
+                "lat": 30.9750,
+                "lng": 76.5200,
+                "address": "Bhatha Sahib Road, Rupnagar"
+            },
+            "distance": 4.5,
+            "operatingHours": {
+                "monday": {
+                    "open": "04:00",
+                    "close": "21:00"
+                },
+                "tuesday": {
+                    "open": "04:00",
+                    "close": "21:00"
+                },
+                "wednesday": {
+                    "open": "04:00",
+                    "close": "21:00"
+                },
+                "thursday": {
+                    "open": "04:00",
+                    "close": "21:00"
+                },
+                "friday": {
+                    "open": "04:00",
+                    "close": "21:00"
+                },
+                "saturday": {
+                    "open": "04:00",
+                    "close": "21:00"
+                },
+                "sunday": {
+                    "open": "04:00",
+                    "close": "21:00"
+                }
+            },
+            "phone": null,
+            "photos": [
+                "/places/gurudwara-1.jpg",
+                "/places/gurudwara-2.jpg"
+            ],
+            "studentDiscount": false,
+            "priceRange": "Free",
+            "reviews": [
+                {
+                    "id": "rev-008",
+                    "userId": "user-008",
+                    "userName": "Harpreet K.",
+                    "rating": 5,
+                    "text": "Beautiful and serene. Langar is delicious. A must-visit in Ropar.",
+                    "date": "2026-01-10T08:30:00Z"
+                }
+            ]
+        },
+        {
+            "id": "place-011",
+            "name": "Brew & Bytes Cafe",
+            "category": "cafe",
+            "description": "Modern cafe with excellent coffee and high-speed WiFi. Popular among students for project discussions and remote work. Great sandwiches too!",
+            "vibes": [
+                "study-friendly",
+                "modern",
+                "wifi"
+            ],
+            "rating": 4.4,
+            "reviewCount": 134,
+            "location": {
+                "lat": 30.9675,
+                "lng": 76.5285,
+                "address": "Tech Park Road, Rupnagar"
+            },
+            "distance": 0.7,
+            "operatingHours": {
+                "monday": {
+                    "open": "08:00",
+                    "close": "22:00"
+                },
+                "tuesday": {
+                    "open": "08:00",
+                    "close": "22:00"
+                },
+                "wednesday": {
+                    "open": "08:00",
+                    "close": "22:00"
+                },
+                "thursday": {
+                    "open": "08:00",
+                    "close": "22:00"
+                },
+                "friday": {
+                    "open": "08:00",
+                    "close": "23:00"
+                },
+                "saturday": {
+                    "open": "09:00",
+                    "close": "23:00"
+                },
+                "sunday": {
+                    "open": "09:00",
+                    "close": "21:00"
+                }
+            },
+            "phone": "+91-9876543217",
+            "photos": [
+                "/places/brew-bytes-1.jpg"
+            ],
+            "studentDiscount": true,
+            "discountDetails": "Happy hours 3-5 PM: Buy 1 Get 1 on cold coffee",
+            "priceRange": "₹₹",
+            "reviews": []
+        },
+        {
+            "id": "place-012",
+            "name": "Thela Wala Momos",
+            "category": "food",
+            "description": "Street food legend! The best momos in Ropar served from a humble cart. Their spicy red chutney is addictive. Cash only.",
+            "vibes": [
+                "budget",
+                "street-food",
+                "local-favorite"
+            ],
+            "rating": 4.6,
+            "reviewCount": 456,
+            "location": {
+                "lat": 30.9668,
+                "lng": 76.5278,
+                "address": "Outside IIT Gate 2, Rupnagar"
+            },
+            "distance": 0.2,
+            "operatingHours": {
+                "monday": {
+                    "open": "16:00",
+                    "close": "22:00"
+                },
+                "tuesday": {
+                    "open": "16:00",
+                    "close": "22:00"
+                },
+                "wednesday": {
+                    "open": "16:00",
+                    "close": "22:00"
+                },
+                "thursday": {
+                    "open": "16:00",
+                    "close": "22:00"
+                },
+                "friday": {
+                    "open": "16:00",
+                    "close": "23:00"
+                },
+                "saturday": {
+                    "open": "16:00",
+                    "close": "23:00"
+                },
+                "sunday": {
+                    "open": "16:00",
+                    "close": "22:00"
+                }
+            },
+            "phone": null,
+            "photos": [
+                "/places/momos-1.jpg"
+            ],
+            "studentDiscount": false,
+            "priceRange": "₹",
+            "reviews": [
+                {
+                    "id": "rev-009",
+                    "userId": "user-009",
+                    "userName": "Ankit M.",
+                    "rating": 5,
+                    "text": "Best momos in entire Punjab! The chutney is fire 🔥 Only ₹40 for a plate!",
+                    "date": "2026-02-05T18:30:00Z"
+                },
+                {
+                    "id": "rev-010",
+                    "userId": "user-010",
+                    "userName": "Shreya T.",
+                    "rating": 4,
+                    "text": "Amazing taste but queue can be long during evenings. Worth the wait!",
+                    "date": "2026-02-04T19:15:00Z"
+                }
+            ]
+        },
+        {
+            "id": "place-013",
+            "name": "City Cinema",
+            "category": "entertainment",
+            "description": "The only movie theater in Ropar. Decent screen quality and comfortable seats. Student discounts on weekday shows.",
+            "vibes": [
+                "entertainment",
+                "date-spot",
+                "weekend"
+            ],
+            "rating": 3.8,
+            "reviewCount": 267,
+            "location": {
+                "lat": 30.9630,
+                "lng": 76.5240,
+                "address": "Mall Road, Rupnagar"
+            },
+            "distance": 3.5,
+            "operatingHours": {
+                "monday": {
+                    "open": "10:00",
+                    "close": "23:00"
+                },
+                "tuesday": {
+                    "open": "10:00",
+                    "close": "23:00"
+                },
+                "wednesday": {
+                    "open": "10:00",
+                    "close": "23:00"
+                },
+                "thursday": {
+                    "open": "10:00",
+                    "close": "23:00"
+                },
+                "friday": {
+                    "open": "10:00",
+                    "close": "00:00"
+                },
+                "saturday": {
+                    "open": "09:00",
+                    "close": "00:00"
+                },
+                "sunday": {
+                    "open": "09:00",
+                    "close": "23:00"
+                }
+            },
+            "phone": "+91-9876543218",
+            "photos": [
+                "/places/cinema-1.jpg"
+            ],
+            "studentDiscount": true,
+            "discountDetails": "₹99 tickets on Monday-Thursday before 6 PM",
+            "priceRange": "₹₹",
+            "reviews": []
+        },
+        {
+            "id": "place-014",
+            "name": "Gym Zone Fitness",
+            "category": "fitness",
+            "description": "Well-equipped gym with modern machines. Personal trainers available. Special monthly packages for students.",
+            "vibes": [
+                "fitness",
+                "health",
+                "motivated"
+            ],
+            "rating": 4.2,
+            "reviewCount": 78,
+            "location": {
+                "lat": 30.9660,
+                "lng": 76.5290,
+                "address": "Sports Complex, Near Stadium"
+            },
+            "distance": 1.5,
+            "operatingHours": {
+                "monday": {
+                    "open": "05:00",
+                    "close": "22:00"
+                },
+                "tuesday": {
+                    "open": "05:00",
+                    "close": "22:00"
+                },
+                "wednesday": {
+                    "open": "05:00",
+                    "close": "22:00"
+                },
+                "thursday": {
+                    "open": "05:00",
+                    "close": "22:00"
+                },
+                "friday": {
+                    "open": "05:00",
+                    "close": "22:00"
+                },
+                "saturday": {
+                    "open": "06:00",
+                    "close": "20:00"
+                },
+                "sunday": {
+                    "open": "06:00",
+                    "close": "18:00"
+                }
+            },
+            "phone": "+91-9876543219",
+            "photos": [
+                "/places/gym-1.jpg"
+            ],
+            "studentDiscount": true,
+            "discountDetails": "₹800/month for students (regular ₹1200)",
+            "priceRange": "₹₹",
+            "reviews": [
+                {
+                    "id": "rev-011",
+                    "userId": "user-011",
+                    "userName": "Raj P.",
+                    "rating": 4,
+                    "text": "Good equipment and trainers. Gets crowded in evenings though.",
+                    "date": "2026-01-22T06:30:00Z"
+                }
+            ]
+        },
+        {
+            "id": "place-015",
+            "name": "Book Worm Store",
+            "category": "shopping",
+            "description": "Second-hand and new textbooks at great prices. Also stocks novels, magazines, and competitive exam books. Trade-in your old books!",
+            "vibes": [
+                "budget",
+                "academic",
+                "bookworm"
+            ],
+            "rating": 4.3,
+            "reviewCount": 112,
+            "location": {
+                "lat": 30.9663,
+                "lng": 76.5272,
+                "address": "College Road, Near Central Library"
+            },
+            "distance": 0.4,
+            "operatingHours": {
+                "monday": {
+                    "open": "10:00",
+                    "close": "20:00"
+                },
+                "tuesday": {
+                    "open": "10:00",
+                    "close": "20:00"
+                },
+                "wednesday": {
+                    "open": "10:00",
+                    "close": "20:00"
+                },
+                "thursday": {
+                    "open": "10:00",
+                    "close": "20:00"
+                },
+                "friday": {
+                    "open": "10:00",
+                    "close": "20:00"
+                },
+                "saturday": {
+                    "open": "10:00",
+                    "close": "19:00"
+                },
+                "sunday": {
+                    "open": "11:00",
+                    "close": "17:00"
+                }
+            },
+            "phone": "+91-9876543220",
+            "photos": [
+                "/places/bookstore-1.jpg"
+            ],
+            "studentDiscount": true,
+            "discountDetails": "5% extra off on used books for first-years",
+            "priceRange": "₹",
+            "reviews": [
+                {
+                    "id": "rev-012",
+                    "userId": "user-012",
+                    "userName": "Meera L.",
+                    "rating": 5,
+                    "text": "Saved so much money buying second-hand textbooks here! Owner is super helpful.",
+                    "date": "2026-01-18T14:00:00Z"
+                }
+            ]
+        }
+    ]
 }

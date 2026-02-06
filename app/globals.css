@@ -1790,3 +1790,136 @@ h4,
   opacity: 0.4;
   cursor: not-allowed;
 }
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   EXPLORER - VIBE BADGES & CATEGORY STYLES
+   ───────────────────────────────────────────────────────────────────────────── */
+
+/* Vibe Badge Colors */
+.vibe-study {
+  background: rgba(88, 86, 214, 0.12);
+  color: var(--ios-indigo);
+}
+
+.vibe-datespot {
+  background: rgba(255, 45, 85, 0.12);
+  color: var(--ios-pink);
+}
+
+.vibe-budget {
+  background: rgba(52, 199, 89, 0.12);
+  color: var(--ios-green);
+}
+
+.vibe-family {
+  background: rgba(255, 149, 0, 0.12);
+  color: var(--ios-orange);
+}
+
+.vibe-chill {
+  background: rgba(90, 200, 250, 0.12);
+  color: var(--ios-teal);
+}
+
+.vibe-nature {
+  background: rgba(52, 199, 89, 0.12);
+  color: var(--ios-green);
+}
+
+.vibe-peaceful {
+  background: rgba(90, 200, 250, 0.12);
+  color: var(--ios-teal);
+}
+
+.vibe-fun {
+  background: rgba(175, 82, 222, 0.12);
+  color: var(--ios-purple);
+}
+
+.vibe-latenight {
+  background: rgba(88, 86, 214, 0.12);
+  color: var(--ios-indigo);
+}
+
+.vibe-wifi {
+  background: rgba(0, 122, 255, 0.12);
+  color: var(--ios-blue);
+}
+
+.vibe-default {
+  background: var(--fill-tertiary);
+  color: var(--text-secondary);
+}
+
+/* Category Badge Colors */
+.cat-food {
+  background: rgba(255, 149, 0, 0.12);
+  color: var(--ios-orange);
+}
+
+.cat-cafe {
+  background: rgba(255, 204, 0, 0.12);
+  color: #B8860B;
+}
+
+.cat-nature {
+  background: rgba(52, 199, 89, 0.12);
+  color: var(--ios-green);
+}
+
+.cat-entertainment {
+  background: rgba(175, 82, 222, 0.12);
+  color: var(--ios-purple);
+}
+
+.cat-shopping {
+  background: rgba(0, 122, 255, 0.12);
+  color: var(--ios-blue);
+}
+
+.cat-spiritual {
+  background: rgba(255, 204, 0, 0.12);
+  color: #DAA520;
+}
+
+.cat-fitness {
+  background: rgba(255, 59, 48, 0.12);
+  color: var(--ios-red);
+}
+
+.cat-default {
+  background: var(--fill-tertiary);
+  color: var(--text-secondary);
+}
+
+/* Additional Grid Utilities */
+@media (min-width: 1024px) {
+  .lg\:grid-cols-3 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Line Clamp Utilities */
+.line-clamp-1 {
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Hide Scrollbar */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
