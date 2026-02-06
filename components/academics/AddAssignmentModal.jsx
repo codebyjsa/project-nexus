@@ -107,8 +107,8 @@ export default function AddAssignmentModal({ isOpen, onClose, semesterId, course
                         type="button"
                         onClick={() => setMode('existing')}
                         className={`flex-1 px-4 py-2 rounded-[16px] text-sm font-medium transition-all ${mode === 'existing'
-                                ? 'bg-purple-500 text-white'
-                                : 'bg-gray-800 text-gray-400 hover:bg-gray-700'
+                            ? 'bg-purple-500 text-white'
+                            : 'bg-gray-800 text-gray-400 hover:bg-gray-700'
                             }`}
                     >
                         Existing Course
@@ -117,8 +117,8 @@ export default function AddAssignmentModal({ isOpen, onClose, semesterId, course
                         type="button"
                         onClick={() => setMode('new')}
                         className={`flex-1 px-4 py-2 rounded-[16px] text-sm font-medium transition-all ${mode === 'new'
-                                ? 'bg-green-500 text-white'
-                                : 'bg-gray-800 text-gray-400 hover:bg-gray-700'
+                            ? 'bg-green-500 text-white'
+                            : 'bg-gray-800 text-gray-400 hover:bg-gray-700'
                             }`}
                     >
                         ➕ New Course
@@ -149,49 +149,54 @@ export default function AddAssignmentModal({ isOpen, onClose, semesterId, course
                             <p className="text-xs text-green-400 mb-2">Create a new course for this assignment</p>
 
                             <div>
-                                <label className="block text-xs font-medium text-gray-400 mb-1">Course Code</label>
+                                <label className="block text-xs font-medium text-gray-400 mb-1">Course Code <span className="text-red-400">*</span></label>
                                 <input
                                     type="text"
                                     value={newCourse.code}
-                                    onChange={(e) => setNewCourse({ ...newCourse, code: e.target.value })}
+                                    onChange={(e) => setNewCourse({ ...newCourse, code: e.target.value.toUpperCase() })}
                                     required
-                                    placeholder="e.g., CS301"
+                                    minLength={2}
+                                    maxLength={10}
+                                    placeholder="e.g., CS301, MATH201"
                                     className="w-full px-3 py-2 bg-gray-800 border border-gray-700 rounded-[12px] text-white text-sm placeholder-gray-500 focus:outline-none focus:border-green-500 transition-colors"
                                 />
                             </div>
 
                             <div>
-                                <label className="block text-xs font-medium text-gray-400 mb-1">Course Title</label>
+                                <label className="block text-xs font-medium text-gray-400 mb-1">Course Title <span className="text-red-400">*</span></label>
                                 <input
                                     type="text"
                                     value={newCourse.title}
                                     onChange={(e) => setNewCourse({ ...newCourse, title: e.target.value })}
                                     required
+                                    minLength={3}
                                     placeholder="e.g., Advanced Algorithms"
                                     className="w-full px-3 py-2 bg-gray-800 border border-gray-700 rounded-[12px] text-white text-sm placeholder-gray-500 focus:outline-none focus:border-green-500 transition-colors"
                                 />
                             </div>
 
                             <div>
-                                <label className="block text-xs font-medium text-gray-400 mb-1">Professor</label>
+                                <label className="block text-xs font-medium text-gray-400 mb-1">Professor <span className="text-red-400">*</span></label>
                                 <input
                                     type="text"
                                     value={newCourse.professor}
                                     onChange={(e) => setNewCourse({ ...newCourse, professor: e.target.value })}
                                     required
+                                    minLength={3}
                                     placeholder="e.g., Dr. Smith"
                                     className="w-full px-3 py-2 bg-gray-800 border border-gray-700 rounded-[12px] text-white text-sm placeholder-gray-500 focus:outline-none focus:border-green-500 transition-colors"
                                 />
                             </div>
 
                             <div>
-                                <label className="block text-xs font-medium text-gray-400 mb-1">Office Hours</label>
+                                <label className="block text-xs font-medium text-gray-400 mb-1">Office Hours <span className="text-red-400">*</span></label>
                                 <input
                                     type="text"
                                     value={newCourse.officeHours}
                                     onChange={(e) => setNewCourse({ ...newCourse, officeHours: e.target.value })}
                                     required
-                                    placeholder="e.g., Mon 2-4 PM"
+                                    minLength={5}
+                                    placeholder="e.g., Mon 2-4 PM, Tue 10-12 AM"
                                     className="w-full px-3 py-2 bg-gray-800 border border-gray-700 rounded-[12px] text-white text-sm placeholder-gray-500 focus:outline-none focus:border-green-500 transition-colors"
                                 />
                             </div>
@@ -203,24 +208,26 @@ export default function AddAssignmentModal({ isOpen, onClose, semesterId, course
                         <p className="text-xs text-gray-500 mb-3">Assignment Details</p>
 
                         <div>
-                            <label className="block text-sm font-medium text-gray-400 mb-2">Title</label>
+                            <label className="block text-sm font-medium text-gray-400 mb-2">Title <span className="text-red-400">*</span></label>
                             <input
                                 type="text"
                                 value={assignment.title}
                                 onChange={(e) => setAssignment({ ...assignment, title: e.target.value })}
                                 required
+                                minLength={3}
                                 placeholder="e.g., Linked List Implementation"
                                 className="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-[16px] text-white placeholder-gray-500 focus:outline-none focus:border-purple-500 transition-colors"
                             />
                         </div>
 
                         <div className="mt-3">
-                            <label className="block text-sm font-medium text-gray-400 mb-2">Description</label>
+                            <label className="block text-sm font-medium text-gray-400 mb-2">Description <span className="text-red-400">*</span></label>
                             <textarea
                                 value={assignment.description}
                                 onChange={(e) => setAssignment({ ...assignment, description: e.target.value })}
                                 required
-                                placeholder="Describe the assignment..."
+                                minLength={10}
+                                placeholder="Describe the assignment in detail..."
                                 rows={3}
                                 className="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-[16px] text-white placeholder-gray-500 focus:outline-none focus:border-purple-500 transition-colors resize-none"
                             />
@@ -254,8 +261,8 @@ export default function AddAssignmentModal({ isOpen, onClose, semesterId, course
                             type="submit"
                             disabled={loading}
                             className={`flex-1 px-6 py-3 rounded-[16px] text-white font-medium hover:shadow-lg transition-all disabled:opacity-50 ${mode === 'new'
-                                    ? 'bg-gradient-to-r from-green-500 to-teal-500 hover:shadow-green-500/50'
-                                    : 'bg-gradient-to-r from-purple-500 to-pink-500 hover:shadow-purple-500/50'
+                                ? 'bg-gradient-to-r from-green-500 to-teal-500 hover:shadow-green-500/50'
+                                : 'bg-gradient-to-r from-purple-500 to-pink-500 hover:shadow-purple-500/50'
                                 }`}
                         >
                             {loading ? 'Adding...' : mode === 'new' ? 'Create & Add' : 'Add Assignment'}

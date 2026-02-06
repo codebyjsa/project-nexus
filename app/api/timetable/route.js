@@ -272,6 +272,21 @@ export async function DELETE(request) {
         return NextResponse.json({ success: true, message: 'Assignment deleted' });
       }
 
+      case 'delete_course': {
+        const { semesterId, courseId } = body;
+        const semester = data.semesters.find(s => s.id === semesterId);
+        if (!semester) {
+          return NextResponse.json({ success: false, error: 'Semester not found' }, { status: 404 });
+        }
+        const courseIndex = semester.courses.findIndex(c => c.id === courseId);
+        if (courseIndex === -1) {
+          return NextResponse.json({ success: false, error: 'Course not found' }, { status: 404 });
+        }
+        semester.courses.splice(courseIndex, 1);
+        writeTimetable(data);
+        return NextResponse.json({ success: true, message: 'Course deleted' });
+      }
+
       default:
         return NextResponse.json({ success: false, error: 'Invalid operation type' }, { status: 400 });
     }

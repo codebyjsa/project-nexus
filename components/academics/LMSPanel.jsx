@@ -79,6 +79,26 @@ export default function LMSPanel({ semesterId }) {
         }
     };
 
+    // Delete course
+    const deleteCourse = async (courseId, courseName) => {
+        if (!confirm(`Are you sure you want to delete "${courseName}"? This will remove all assignments and schedules for this course.`)) return;
+
+        try {
+            await fetch('/api/timetable', {
+                method: 'DELETE',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    type: 'delete_course',
+                    semesterId,
+                    courseId
+                })
+            });
+            fetchTimetable();
+        } catch (error) {
+            console.error('Error deleting course:', error);
+        }
+    };
+
     // Calculate days until due date
     const getDaysUntilDue = (dueDate) => {
         const today = new Date();
@@ -171,20 +191,29 @@ export default function LMSPanel({ semesterId }) {
                     {semester.courses.map(course => (
                         <div key={course.id} className="bg-gray-800/30 backdrop-blur-xl border border-gray-700/50 rounded-[28px] p-6">
                             {/* Course Header with Add Button */}
-                            <div className="flex items-center justify-between mb-4">
+                            <div className="flex items-center justify-between mb-4 group/course">
                                 <div>
                                     <h3 className="text-lg font-semibold text-white">{course.code}</h3>
                                     <p className="text-sm text-gray-400">{course.title}</p>
                                 </div>
-                                <button
-                                    onClick={() => {
-                                        setSelectedCourse(course);
-                                        setShowAddModal(true);
-                                    }}
-                                    className="px-4 py-2 bg-gradient-to-r from-purple-500 to-pink-500 rounded-[16px] text-white text-sm font-medium hover:shadow-lg hover:shadow-purple-500/50 transition-all flex items-center gap-2"
-                                >
-                                    ➕ Add Assignment
-                                </button>
+                                <div className="flex gap-2">
+                                    <button
+                                        onClick={() => {
+                                            setSelectedCourse(course);
+                                            setShowAddModal(true);
+                                        }}
+                                        className="px-4 py-2 bg-gradient-to-r from-purple-500 to-pink-500 rounded-[16px] text-white text-sm font-medium hover:shadow-lg hover:shadow-purple-500/50 transition-all flex items-center gap-2"
+                                    >
+                                        ➕ Add Assignment
+                                    </button>
+                                    <button
+                                        onClick={() => deleteCourse(course.id, `${course.code} - ${course.title}`)}
+                                        className="opacity-0 group-hover/course:opacity-100 transition-opacity p-2 bg-red-500/10 hover:bg-red-500/20 border border-red-500/30 rounded-[12px] text-red-400"
+                                        title="Delete course"
+                                    >
+                                        🗑️
+                                    </button>
+                                </div>
                             </div>
 
                             {/* Assignments */}
@@ -220,8 +249,8 @@ export default function LMSPanel({ semesterId }) {
                                                         <button
                                                             onClick={() => toggleSubmission(course.id, assignment.id, assignment.submitted)}
                                                             className={`px-4 py-2 rounded-[16px] text-sm font-medium transition-all duration-300 ${assignment.submitted
-                                                                    ? 'bg-green-500/20 border border-green-500/30 text-green-400 hover:bg-green-500/30'
-                                                                    : 'bg-blue-500/20 border border-blue-500/30 text-blue-400 hover:bg-blue-500/30'
+                                                                ? 'bg-green-500/20 border border-green-500/30 text-green-400 hover:bg-green-500/30'
+                                                                : 'bg-blue-500/20 border border-blue-500/30 text-blue-400 hover:bg-blue-500/30'
                                                                 }`}
                                                         >
                                                             {assignment.submitted ? '✓ Submitted' : 'Mark as Submitted'}
