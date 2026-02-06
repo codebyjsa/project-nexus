@@ -1,0 +1,11 @@
+[
+  {
+    "id": "1770379445622",
+    "destination": "Airport",
+    "departureTime": "2026-02-07T04:30:00.000Z",
+    "seatsAvailable": 3,
+    "costEstimate": 200,
+    "userName": "Test Driver",
+    "createdAt": "2026-02-06T12:04:05.622Z"
+  }
+]

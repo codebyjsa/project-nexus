@@ -1,0 +1,17 @@
+[
+  {
+    "id": "1770379176879",
+    "condition": "good",
+    "createdAt": "2026-02-06T11:59:36.879Z"
+  },
+  {
+    "id": "1770379445614",
+    "title": "iPhone 13",
+    "description": "Excellent condition, 128GB",
+    "price": 25000,
+    "category": "Electronics",
+    "condition": "good",
+    "userName": "Test Seller",
+    "createdAt": "2026-02-06T12:04:05.614Z"
+  }
+]
