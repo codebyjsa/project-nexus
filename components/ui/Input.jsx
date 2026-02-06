@@ -1,46 +1,66 @@
 'use client';
 
 import { cn } from '@/lib/utils';
+import { forwardRef } from 'react';
 
-export default function Input({
+const Input = forwardRef(function Input({
     className = '',
-    label = '',
-    error = '',
+    type = 'text',
+    variant = 'default',
     icon = null,
-    textarea = false,
+    error = '',
     ...props
-}) {
-    const InputComponent = textarea ? 'textarea' : 'input';
+}, ref) {
+    const variants = {
+        default: 'input',
+        search: 'input input-search',
+    };
 
     return (
-        <div className="input-group">
+        <div className="relative w-full">
             {icon && (
-                <span className="absolute left-4 top-1/2 -translate-y-1/2 text-[var(--text-tertiary)]">
+                <span className="absolute left-4 top-1/2 -translate-y-1/2 text-[var(--text-tertiary)] text-lg pointer-events-none">
                     {icon}
                 </span>
             )}
-            <InputComponent
+            <input
+                ref={ref}
+                type={type}
                 className={cn(
-                    textarea ? 'input textarea' : 'input',
+                    variants[variant],
                     icon && 'pl-12',
-                    error && 'border-[var(--color-error)] focus:border-[var(--color-error)]',
+                    error && 'border-[var(--ios-red)] focus:border-[var(--ios-red)]',
                     className
                 )}
-                placeholder={label || ' '}
                 {...props}
             />
-            {label && (
-                <label className="input-label">{label}</label>
-            )}
             {error && (
-                <span className="text-xs text-[var(--color-error)] mt-1 block px-1">
-                    {error}
-                </span>
+                <p className="mt-1 text-sm text-[var(--ios-red)]">{error}</p>
             )}
         </div>
     );
-}
+});
 
-export function TextArea(props) {
-    return <Input textarea {...props} />;
+export default Input;
+
+export function Textarea({
+    className = '',
+    error = '',
+    ...props
+}) {
+    return (
+        <div className="w-full">
+            <textarea
+                className={cn(
+                    'input textarea',
+                    error && 'border-[var(--ios-red)] focus:border-[var(--ios-red)]',
+                    className
+                )}
+                {...props}
+            />
+            {error && (
+                <p className="mt-1 text-sm text-[var(--ios-red)]">{error}</p>
+            )}
+        </div>
+    );
 }

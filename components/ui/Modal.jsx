@@ -4,17 +4,24 @@ import { useEffect, useCallback } from 'react';
 import { cn } from '@/lib/utils';
 
 export default function Modal({
-    isOpen = false,
+    isOpen,
     onClose,
-    title = '',
+    title,
     children,
-    footer = null,
     className = '',
+    size = 'md',
     showHandle = true,
 }) {
-    // Close on escape key
+    const sizes = {
+        sm: 'max-w-sm',
+        md: 'max-w-lg',
+        lg: 'max-w-2xl',
+        xl: 'max-w-4xl',
+        full: 'max-w-full mx-4',
+    };
+
     const handleEscape = useCallback((e) => {
-        if (e.key === 'Escape') onClose?.();
+        if (e.key === 'Escape') onClose();
     }, [onClose]);
 
     useEffect(() => {
@@ -28,26 +35,20 @@ export default function Modal({
         };
     }, [isOpen, handleEscape]);
 
-    // Close on backdrop click
-    const handleBackdropClick = (e) => {
-        if (e.target === e.currentTarget) onClose?.();
-    };
-
     return (
         <div
             className={cn('modal-overlay', isOpen && 'open')}
-            onClick={handleBackdropClick}
-            aria-hidden={!isOpen}
+            onClick={(e) => e.target === e.currentTarget && onClose()}
         >
-            <div className={cn('modal', className)} role="dialog" aria-modal="true">
+            <div className={cn('modal', sizes[size], className)}>
                 {showHandle && <div className="modal-handle" />}
 
                 {title && (
                     <div className="modal-header">
                         <h3 className="modal-title">{title}</h3>
                         <button
-                            className="modal-close"
                             onClick={onClose}
+                            className="modal-close"
                             aria-label="Close modal"
                         >
                             ✕
@@ -58,12 +59,6 @@ export default function Modal({
                 <div className="modal-body">
                     {children}
                 </div>
-
-                {footer && (
-                    <div className="modal-footer">
-                        {footer}
-                    </div>
-                )}
             </div>
         </div>
     );

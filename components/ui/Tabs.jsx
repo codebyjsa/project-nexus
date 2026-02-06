@@ -2,19 +2,14 @@
 
 import { cn } from '@/lib/utils';
 
-export default function Tabs({
-    tabs = [],
-    activeTab = '',
-    onTabChange,
-    className = '',
-}) {
+export default function Tabs({ tabs, activeTab, onTabChange, className = '' }) {
     return (
         <div className={cn('tabs', className)}>
             {tabs.map((tab) => (
                 <button
                     key={tab.id}
+                    onClick={() => onTabChange(tab.id)}
                     className={cn('tab', activeTab === tab.id && 'active')}
-                    onClick={() => onTabChange?.(tab.id)}
                 >
                     {tab.icon && <span>{tab.icon}</span>}
                     <span>{tab.label}</span>
@@ -24,7 +19,7 @@ export default function Tabs({
     );
 }
 
-export function TabPanel({ children, isActive = false, className = '' }) {
+export function TabPanel({ children, isActive, className = '' }) {
     if (!isActive) return null;
 
     return (

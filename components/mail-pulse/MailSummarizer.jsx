@@ -3,7 +3,8 @@
 import { useState } from 'react';
 import Card from '@/components/ui/Card';
 import Button from '@/components/ui/Button';
-import { TextArea } from '@/components/ui/Input';
+import Input, { Textarea } from '@/components/ui/Input';
+import Badge from '@/components/ui/Badge';
 
 export default function MailSummarizer({ onSummarized }) {
     const [emailContent, setEmailContent] = useState('');
@@ -36,11 +37,8 @@ export default function MailSummarizer({ onSummarized }) {
                 throw new Error(data.error || 'Failed to summarize');
             }
 
-            // Clear the form
             setEmailContent('');
             setSubject('');
-
-            // Notify parent component
             onSummarized?.(data.mail);
         } catch (err) {
             setError(err.message);
@@ -65,42 +63,48 @@ export default function MailSummarizer({ onSummarized }) {
     };
 
     return (
-        <Card variant="glass" className="mb-lg">
-            <div className="flex items-center justify-between mb-md">
-                <h3 className="h4 flex items-center gap-sm">
-                    <span>✉️</span>
-                    <span>Mail Summarizer</span>
-                </h3>
-                <span className="badge badge-info">AI Powered</span>
+        <Card variant="glass-thick" className="mb-4">
+            {/* Header */}
+            <div className="flex items-center justify-between mb-4">
+                <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[var(--ios-blue)] to-[var(--ios-indigo)] flex items-center justify-center text-xl">
+                        ✉️
+                    </div>
+                    <div>
+                        <h3 className="font-semibold">Mail Summarizer</h3>
+                        <p className="text-xs text-tertiary">Powered by AI</p>
+                    </div>
+                </div>
+                <Badge variant="info" glow>✨ AI</Badge>
             </div>
 
-            <p className="text-sm text-tertiary mb-md">
-                Paste your college email below and let AI extract the key information, deadlines, and action items.
+            <p className="text-sm text-tertiary mb-4">
+                Paste your college email and let AI extract key info, deadlines & action items.
             </p>
 
-            <div className="flex flex-col gap-md">
-                <input
+            <div className="flex flex-col gap-3">
+                <Input
                     type="text"
-                    className="input"
                     placeholder="Email Subject (optional)"
                     value={subject}
                     onChange={(e) => setSubject(e.target.value)}
                 />
 
-                <TextArea
+                <Textarea
                     placeholder="Paste your email content here..."
                     value={emailContent}
                     onChange={(e) => setEmailContent(e.target.value)}
-                    style={{ minHeight: '150px' }}
+                    style={{ minHeight: '140px' }}
                 />
 
                 {error && (
-                    <div className="text-sm text-[var(--color-error)] p-sm bg-[rgba(255,59,48,0.1)] rounded-md">
-                        ⚠️ {error}
+                    <div className="text-sm text-[var(--ios-red)] p-3 bg-[rgba(255,59,48,0.1)] rounded-xl flex items-center gap-2">
+                        <span>⚠️</span>
+                        <span>{error}</span>
                     </div>
                 )}
 
-                <div className="flex gap-sm flex-wrap">
+                <div className="flex gap-2 flex-wrap">
                     <Button onClick={handlePaste} variant="secondary" icon="📋">
                         Paste
                     </Button>
@@ -112,8 +116,9 @@ export default function MailSummarizer({ onSummarized }) {
                         loading={loading}
                         className="flex-1"
                         icon="✨"
+                        glow={!loading}
                     >
-                        {loading ? 'Summarizing...' : 'Summarize with AI'}
+                        {loading ? 'Analyzing...' : 'Summarize'}
                     </Button>
                 </div>
             </div>

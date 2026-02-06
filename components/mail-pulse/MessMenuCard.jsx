@@ -14,7 +14,6 @@ export default function MessMenuCard({ item }) {
         nuts: { icon: '🥜', label: 'Nuts' },
     };
 
-    // Food icons based on common items
     const getFoodIcon = (name) => {
         const lowerName = name.toLowerCase();
         if (lowerName.includes('rice') || lowerName.includes('biryani')) return '🍚';
@@ -38,12 +37,12 @@ export default function MessMenuCard({ item }) {
     };
 
     return (
-        <div className="flex items-center justify-between p-md bg-[var(--bg-secondary)] rounded-xl hover:bg-[var(--bg-tertiary)] transition-all hover:scale-[1.01] cursor-default group">
-            <div className="flex items-center gap-md flex-1 min-w-0">
+        <div className="flex items-center justify-between p-3 bg-[var(--bg-secondary)] rounded-xl hover:bg-[var(--fill-tertiary)] transition-all hover:scale-[1.01] cursor-default group">
+            <div className="flex items-center gap-3 flex-1 min-w-0">
                 {/* Food Icon */}
-                <div className={`w-12 h-12 rounded-xl flex items-center justify-center text-xl flex-shrink-0 transition-transform group-hover:scale-110 ${item.type === 'veg'
-                        ? 'bg-[rgba(52,199,89,0.12)]'
-                        : 'bg-[rgba(255,59,48,0.12)]'
+                <div className={`w-11 h-11 rounded-xl flex items-center justify-center text-xl flex-shrink-0 transition-transform group-hover:scale-110 ${item.type === 'veg'
+                        ? 'bg-gradient-to-br from-[rgba(52,199,89,0.2)] to-[rgba(52,199,89,0.1)]'
+                        : 'bg-gradient-to-br from-[rgba(255,59,48,0.2)] to-[rgba(255,59,48,0.1)]'
                     }`}>
                     {getFoodIcon(item.name)}
                 </div>
@@ -53,9 +52,9 @@ export default function MessMenuCard({ item }) {
 
                     {/* Allergens */}
                     {item.allergens?.length > 0 && (
-                        <div className="flex items-center gap-xs mt-1">
+                        <div className="flex items-center gap-1.5 mt-0.5">
                             <span className="text-xs text-tertiary">Contains:</span>
-                            <div className="flex gap-1">
+                            <div className="flex gap-0.5">
                                 {item.allergens.map((allergen, idx) => (
                                     <span
                                         key={idx}
@@ -69,16 +68,16 @@ export default function MessMenuCard({ item }) {
                         </div>
                     )}
 
-                    {/* Nutritional info placeholder (can be extended with real data) */}
+                    {/* Calories */}
                     {item.calories && (
-                        <div className="flex items-center gap-xs mt-1 text-xs text-tertiary">
+                        <div className="flex items-center gap-1 mt-0.5 text-xs text-tertiary">
                             <span>🔥 {item.calories} cal</span>
                         </div>
                     )}
                 </div>
             </div>
 
-            <Badge variant={item.type} icon={dietaryBadge.icon} size="sm">
+            <Badge variant={item.type} size="sm">
                 {dietaryBadge.label}
             </Badge>
         </div>

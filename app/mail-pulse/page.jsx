@@ -15,11 +15,11 @@ const mainTabs = [
 ];
 
 const categoryFilters = [
-    { id: 'all', label: 'All' },
-    { id: 'urgent', label: '🚨 Urgent' },
-    { id: 'academic', label: '📚 Academic' },
-    { id: 'event', label: '🎉 Events' },
-    { id: 'general', label: '📧 General' },
+    { id: 'all', label: 'All', icon: '📋' },
+    { id: 'urgent', label: 'Urgent', icon: '🚨' },
+    { id: 'academic', label: 'Academic', icon: '📚' },
+    { id: 'event', label: 'Events', icon: '🎉' },
+    { id: 'general', label: 'General', icon: '📧' },
 ];
 
 export default function MailPulsePage() {
@@ -60,7 +60,6 @@ export default function MailPulsePage() {
         setSelectedMail(mail);
         setShowModal(true);
 
-        // Mark as read
         if (!mail.isRead) {
             try {
                 await fetch('/api/mail', {
@@ -81,20 +80,22 @@ export default function MailPulsePage() {
     const unreadCount = mails.filter(m => !m.isRead).length;
 
     return (
-        <div className="container pt-lg">
+        <div className="container pt-6">
             {/* Header */}
-            <div className="mb-lg animate-slideDown">
-                <h1 className="h2 flex items-center gap-sm">
-                    <span>📬</span>
-                    <span>Daily Pulse</span>
-                </h1>
-                <p className="text-secondary">
-                    Stay updated with AI-powered mail summaries and today's menu
-                </p>
+            <div className="mb-6 animate-slideDown">
+                <div className="flex items-center gap-3 mb-2">
+                    <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-[var(--ios-blue)] to-[var(--ios-purple)] flex items-center justify-center text-2xl">
+                        📬
+                    </div>
+                    <div>
+                        <h1 className="h3">Daily Pulse</h1>
+                        <p className="text-sm text-tertiary">AI-powered insights</p>
+                    </div>
+                </div>
             </div>
 
             {/* Main Tabs */}
-            <div className="mb-lg animate-fadeIn">
+            <div className="mb-5 animate-fadeIn">
                 <Tabs
                     tabs={mainTabs.map(tab => ({
                         ...tab,
@@ -110,35 +111,35 @@ export default function MailPulsePage() {
             {/* Mails Tab */}
             <TabPanel isActive={activeTab === 'mails'}>
                 {/* Mail Summarizer */}
-                <div className="animate-slideUp">
+                <div className="animate-slideUp mb-5">
                     <MailSummarizer onSummarized={handleNewMail} />
                 </div>
 
                 {/* Category Filters */}
-                <div className="flex gap-xs mb-lg overflow-x-auto pb-sm animate-fadeIn" style={{ animationDelay: '0.1s' }}>
+                <div className="flex gap-2 mb-5 overflow-x-auto pb-2 scrollbar-hide animate-fadeIn" style={{ animationDelay: '0.1s' }}>
                     {categoryFilters.map((filter) => (
                         <button
                             key={filter.id}
                             onClick={() => setCategoryFilter(filter.id)}
-                            className={`px-4 py-2 text-sm rounded-full whitespace-nowrap transition-all ${categoryFilter === filter.id
-                                    ? 'bg-[var(--color-primary-500)] text-white'
-                                    : 'bg-[var(--bg-tertiary)] text-tertiary hover:text-secondary'
+                            className={`inline-flex items-center gap-2 px-4 py-2 text-sm font-medium rounded-full whitespace-nowrap transition-all ${categoryFilter === filter.id
+                                    ? 'bg-[var(--color-primary)] text-white shadow-lg shadow-[var(--color-primary)]/30'
+                                    : 'bg-[var(--fill-tertiary)] text-secondary hover:bg-[var(--fill-secondary)]'
                                 }`}
                         >
-                            {filter.label}
+                            <span>{filter.icon}</span>
+                            <span>{filter.label}</span>
                         </button>
                     ))}
                 </div>
 
                 {/* Mail List */}
-                <div className="flex flex-col gap-md">
+                <div className="flex flex-col gap-3">
                     {loading ? (
-                        // Skeleton loading
                         Array.from({ length: 3 }).map((_, idx) => (
-                            <div key={idx} className="card p-lg animate-pulse">
-                                <div className="skeleton h-6 w-3/4 mb-sm" />
-                                <div className="skeleton h-4 w-1/2 mb-md" />
-                                <div className="skeleton h-16 w-full" />
+                            <div key={idx} className="glass-card animate-pulse">
+                                <div className="skeleton h-5 w-3/4 mb-2" />
+                                <div className="skeleton h-4 w-1/2 mb-3" />
+                                <div className="skeleton h-14 w-full" />
                             </div>
                         ))
                     ) : mails.length > 0 ? (
@@ -146,16 +147,16 @@ export default function MailPulsePage() {
                             <div
                                 key={mail.id}
                                 className="animate-slideUp"
-                                style={{ animationDelay: `${0.05 * idx}s` }}
+                                style={{ animationDelay: `${0.03 * idx}s` }}
                             >
                                 <MailCard mail={mail} onClick={handleMailClick} />
                             </div>
                         ))
                     ) : (
-                        <div className="text-center py-2xl">
-                            <div className="text-5xl mb-md">📭</div>
-                            <h3 className="h4 text-secondary mb-sm">No mails yet</h3>
-                            <p className="text-tertiary">
+                        <div className="glass-card text-center py-12">
+                            <div className="text-5xl mb-4 animate-float">📭</div>
+                            <h3 className="h4 mb-2">No mails yet</h3>
+                            <p className="text-tertiary text-sm">
                                 Paste your first email above to get an AI summary
                             </p>
                         </div>
@@ -175,11 +176,12 @@ export default function MailPulsePage() {
                 isOpen={showModal}
                 onClose={() => setShowModal(false)}
                 title={selectedMail?.subject || 'Email Details'}
+                size="lg"
             >
                 {selectedMail && (
-                    <div className="flex flex-col gap-md">
+                    <div className="flex flex-col gap-4">
                         {/* Category & Priority */}
-                        <div className="flex items-center gap-sm flex-wrap">
+                        <div className="flex items-center gap-2 flex-wrap">
                             <Badge variant={selectedMail.category}>
                                 {getCategoryStyle(selectedMail.category).label}
                             </Badge>
@@ -189,19 +191,19 @@ export default function MailPulsePage() {
                         </div>
 
                         {/* Summary */}
-                        <div>
-                            <h4 className="text-sm font-semibold text-tertiary mb-xs">Summary</h4>
+                        <div className="card-inset">
+                            <h4 className="text-xs font-semibold text-tertiary mb-1 uppercase tracking-wide">Summary</h4>
                             <p className="text-primary">{selectedMail.summary}</p>
                         </div>
 
                         {/* Key Points */}
                         {selectedMail.keyPoints?.length > 0 && (
                             <div>
-                                <h4 className="text-sm font-semibold text-tertiary mb-xs">Key Points</h4>
-                                <ul className="space-y-1">
+                                <h4 className="text-xs font-semibold text-tertiary mb-2 uppercase tracking-wide">Key Points</h4>
+                                <ul className="space-y-2">
                                     {selectedMail.keyPoints.map((point, idx) => (
-                                        <li key={idx} className="flex items-start gap-sm text-sm">
-                                            <span className="text-[var(--color-primary-500)]">•</span>
+                                        <li key={idx} className="flex items-start gap-2 text-sm">
+                                            <span className="text-[var(--color-primary)] mt-0.5">•</span>
                                             <span>{point}</span>
                                         </li>
                                     ))}
@@ -212,11 +214,11 @@ export default function MailPulsePage() {
                         {/* Action Items */}
                         {selectedMail.actionItems?.length > 0 && (
                             <div>
-                                <h4 className="text-sm font-semibold text-tertiary mb-xs">Action Items</h4>
-                                <ul className="space-y-1">
+                                <h4 className="text-xs font-semibold text-tertiary mb-2 uppercase tracking-wide">Action Items</h4>
+                                <ul className="space-y-2">
                                     {selectedMail.actionItems.map((item, idx) => (
-                                        <li key={idx} className="flex items-start gap-sm text-sm">
-                                            <span>☐</span>
+                                        <li key={idx} className="flex items-start gap-2 text-sm">
+                                            <span className="text-[var(--ios-green)]">☐</span>
                                             <span>{item}</span>
                                         </li>
                                     ))}
@@ -226,11 +228,11 @@ export default function MailPulsePage() {
 
                         {/* Deadlines */}
                         {selectedMail.deadlines?.length > 0 && (
-                            <div>
-                                <h4 className="text-sm font-semibold text-tertiary mb-xs">Deadlines</h4>
-                                <div className="space-y-1">
+                            <div className="card-inset">
+                                <h4 className="text-xs font-semibold text-tertiary mb-2 uppercase tracking-wide">Deadlines</h4>
+                                <div className="space-y-2">
                                     {selectedMail.deadlines.map((deadline, idx) => (
-                                        <div key={idx} className="flex items-center gap-sm text-sm">
+                                        <div key={idx} className="flex items-center gap-2 text-sm">
                                             <span>📅</span>
                                             <span className="font-medium">{formatDate(deadline.date)}</span>
                                             <span className="text-tertiary">- {deadline.description}</span>
@@ -241,11 +243,11 @@ export default function MailPulsePage() {
                         )}
 
                         {/* Original Content */}
-                        <details className="mt-md">
-                            <summary className="text-sm text-tertiary cursor-pointer hover:text-secondary">
+                        <details className="mt-2">
+                            <summary className="text-sm text-tertiary cursor-pointer hover:text-secondary font-medium">
                                 View Original Email
                             </summary>
-                            <div className="mt-sm p-md bg-[var(--bg-tertiary)] rounded-lg text-sm whitespace-pre-wrap max-h-60 overflow-y-auto">
+                            <div className="mt-3 p-4 bg-[var(--fill-tertiary)] rounded-xl text-sm whitespace-pre-wrap max-h-60 overflow-y-auto">
                                 {selectedMail.originalContent}
                             </div>
                         </details>

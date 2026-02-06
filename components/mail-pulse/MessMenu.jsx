@@ -54,7 +54,6 @@ export default function MessMenu() {
         const mealData = menu.meals[activeMeal];
         let items = mealData.items || [];
 
-        // Apply dietary filter
         if (dietaryFilter !== 'all') {
             items = items.filter(item => item.type === dietaryFilter);
         }
@@ -65,12 +64,10 @@ export default function MessMenu() {
     const mealData = getCurrentMealData();
     const currentTab = mealTabs.find(tab => tab.id === activeMeal);
 
-    // Estimate crowd level based on current time
     const getCrowdLevel = () => {
         const hour = new Date().getHours();
         const minute = new Date().getMinutes();
 
-        // Peak hours for each meal
         const peakHours = {
             breakfast: { start: 8, end: 9 },
             lunch: { start: 13, end: 14 },
@@ -92,19 +89,19 @@ export default function MessMenu() {
 
     const crowdLevel = getCrowdLevel();
     const crowdConfig = {
-        low: { label: 'Low Crowd', color: 'var(--color-success)', icon: '🟢' },
-        medium: { label: 'Moderate', color: 'var(--color-warning)', icon: '🟡' },
-        high: { label: 'Busy', color: 'var(--color-error)', icon: '🔴' },
+        low: { label: 'Low Crowd', color: 'var(--ios-green)', icon: '🟢' },
+        medium: { label: 'Moderate', color: 'var(--ios-orange)', icon: '🟡' },
+        high: { label: 'Busy', color: 'var(--ios-red)', icon: '🔴' },
     };
 
     if (loading) {
         return (
             <Card variant="glass" className="animate-pulse">
-                <div className="flex items-center justify-between mb-md">
+                <div className="flex items-center justify-between mb-4">
                     <div className="skeleton h-8 w-40" />
                     <div className="skeleton h-6 w-24 rounded-full" />
                 </div>
-                <div className="skeleton h-12 w-full mb-lg rounded-lg" />
+                <div className="skeleton h-14 w-full mb-4 rounded-xl" />
                 <div className="space-y-3">
                     {[1, 2, 3, 4].map(i => (
                         <div key={i} className="skeleton h-16 w-full rounded-xl" />
@@ -117,11 +114,11 @@ export default function MessMenu() {
     if (error) {
         return (
             <Card variant="glass">
-                <div className="text-center py-xl">
-                    <div className="text-5xl mb-md">😔</div>
-                    <h3 className="h4 text-secondary mb-sm">Oops!</h3>
-                    <p className="text-tertiary">{error}</p>
-                    <button onClick={fetchMenu} className="btn btn-primary mt-lg">
+                <div className="text-center py-12">
+                    <div className="text-5xl mb-4 animate-float">😔</div>
+                    <h3 className="h4 mb-2">Oops!</h3>
+                    <p className="text-tertiary mb-4">{error}</p>
+                    <button onClick={fetchMenu} className="btn btn-primary">
                         Try Again
                     </button>
                 </div>
@@ -132,9 +129,9 @@ export default function MessMenu() {
     if (!menu) {
         return (
             <Card variant="glass">
-                <div className="text-center py-xl">
-                    <div className="text-5xl mb-md">🍽️</div>
-                    <h3 className="h4 text-secondary mb-sm">No Menu Available</h3>
+                <div className="text-center py-12">
+                    <div className="text-5xl mb-4 animate-float">🍽️</div>
+                    <h3 className="h4 mb-2">No Menu Available</h3>
                     <p className="text-tertiary">The mess menu hasn't been uploaded yet.</p>
                 </div>
             </Card>
@@ -144,60 +141,62 @@ export default function MessMenu() {
     return (
         <Card variant="glass">
             {/* Header */}
-            <div className="flex items-center justify-between mb-md">
-                <div>
-                    <h3 className="h4 flex items-center gap-sm">
-                        <span>🍽️</span>
-                        <span>Today's Menu</span>
-                    </h3>
-                    <p className="text-sm text-tertiary">
-                        {menu.day}, {formatDate(menu.date)}
-                    </p>
+            <div className="flex items-center justify-between mb-4">
+                <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[var(--ios-orange)] to-[var(--ios-pink)] flex items-center justify-center text-xl">
+                        🍽️
+                    </div>
+                    <div>
+                        <h3 className="font-semibold">Today's Menu</h3>
+                        <p className="text-xs text-tertiary">
+                            {menu.day}, {formatDate(menu.date)}
+                        </p>
+                    </div>
                 </div>
-                <div className="flex items-center gap-xs text-sm"
+                <div className="flex items-center gap-1.5 text-sm px-3 py-1.5 rounded-full bg-[var(--fill-tertiary)]"
                     style={{ color: crowdConfig[crowdLevel].color }}>
                     <span>{crowdConfig[crowdLevel].icon}</span>
-                    <span>{crowdConfig[crowdLevel].label}</span>
+                    <span className="font-medium">{crowdConfig[crowdLevel].label}</span>
                 </div>
             </div>
 
-            {/* Meal Tabs */}
-            <div className="flex gap-xs p-xs bg-[var(--bg-tertiary)] rounded-lg mb-lg overflow-x-auto">
+            {/* Meal Tabs - iOS Segmented Control */}
+            <div className="flex gap-1 p-1 bg-[var(--fill-tertiary)] rounded-xl mb-4 overflow-x-auto scrollbar-hide">
                 {mealTabs.map((tab) => (
                     <button
                         key={tab.id}
                         onClick={() => setActiveMeal(tab.id)}
                         className={cn(
-                            'flex-1 flex flex-col items-center gap-1 py-2 px-3 rounded-md transition-all min-w-[80px]',
+                            'flex-1 flex flex-col items-center gap-0.5 py-2.5 px-3 rounded-lg transition-all min-w-[72px]',
                             activeMeal === tab.id
                                 ? 'bg-[var(--bg-secondary)] shadow-sm'
                                 : 'text-tertiary hover:text-secondary'
                         )}
                     >
                         <span className="text-lg">{tab.icon}</span>
-                        <span className="text-xs font-medium">{tab.label}</span>
+                        <span className="text-xs font-semibold">{tab.label}</span>
                     </button>
                 ))}
             </div>
 
             {/* Meal Time & Dietary Filter */}
-            <div className="flex items-center justify-between mb-md flex-wrap gap-sm">
-                <div className="flex items-center gap-sm text-sm text-tertiary">
+            <div className="flex items-center justify-between mb-4 flex-wrap gap-3">
+                <div className="flex items-center gap-2 text-sm text-tertiary">
                     <span>⏰</span>
-                    <span>{currentTab?.time || mealData?.time}</span>
+                    <span className="font-medium">{currentTab?.time || mealData?.time}</span>
                 </div>
 
-                {/* Dietary Filter */}
-                <div className="flex gap-xs">
+                {/* Dietary Filter Pills */}
+                <div className="flex gap-1.5">
                     {dietaryFilters.map((filter) => (
                         <button
                             key={filter.id}
                             onClick={() => setDietaryFilter(filter.id)}
                             className={cn(
-                                'px-3 py-1 text-xs rounded-full transition-all flex items-center gap-1',
+                                'px-3 py-1.5 text-xs font-semibold rounded-full transition-all flex items-center gap-1',
                                 dietaryFilter === filter.id
-                                    ? 'bg-[var(--color-primary-500)] text-white'
-                                    : 'bg-[var(--bg-tertiary)] text-tertiary hover:text-secondary'
+                                    ? 'bg-[var(--color-primary)] text-white shadow-lg shadow-[var(--color-primary)]/25'
+                                    : 'bg-[var(--fill-tertiary)] text-tertiary hover:text-secondary'
                             )}
                         >
                             <span>{filter.icon}</span>
@@ -208,20 +207,20 @@ export default function MessMenu() {
             </div>
 
             {/* Menu Items */}
-            <div className="flex flex-col gap-sm">
+            <div className="flex flex-col gap-2">
                 {mealData?.items?.length > 0 ? (
                     mealData.items.map((item, idx) => (
                         <div
                             key={idx}
                             className="animate-fadeIn"
-                            style={{ animationDelay: `${0.05 * idx}s` }}
+                            style={{ animationDelay: `${0.03 * idx}s` }}
                         >
                             <MessMenuCard item={item} />
                         </div>
                     ))
                 ) : (
-                    <div className="text-center py-lg">
-                        <div className="text-4xl mb-sm">
+                    <div className="text-center py-8 card-inset">
+                        <div className="text-4xl mb-3">
                             {dietaryFilter === 'non-veg' ? '🥬' : '🍖'}
                         </div>
                         <p className="text-tertiary text-sm">
@@ -235,9 +234,9 @@ export default function MessMenu() {
 
             {/* Allergen Legend */}
             {mealData?.items?.length > 0 && (
-                <div className="mt-lg pt-md border-t border-[var(--border-color)]">
-                    <p className="text-xs text-tertiary mb-sm font-medium">Allergen Guide:</p>
-                    <div className="flex flex-wrap gap-sm text-xs text-tertiary">
+                <div className="mt-4 pt-4 border-t border-[var(--divider)]">
+                    <p className="text-xs text-tertiary mb-2 font-semibold uppercase tracking-wide">Allergen Guide</p>
+                    <div className="flex flex-wrap gap-3 text-xs text-tertiary">
                         <span>🥛 Dairy</span>
                         <span>🌾 Gluten</span>
                         <span>🥚 Egg</span>
