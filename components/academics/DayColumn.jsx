@@ -2,7 +2,7 @@
 
 import ClassSlot from './ClassSlot';
 
-export default function DayColumn({ day, slots, courses }) {
+export default function DayColumn({ day, slots, courses, semesterId, onEditSlot }) {
     // Sort slots by start time
     const sortedSlots = [...slots].sort((a, b) => {
         const timeA = parseInt(a.start.replace(':', ''));
@@ -75,7 +75,11 @@ export default function DayColumn({ day, slots, courses }) {
 
                     return (
                         <div key={index}>
-                            <ClassSlot slot={slot} course={course} />
+                            <ClassSlot
+                                slot={slot}
+                                course={course}
+                                onEdit={() => onEditSlot && onEditSlot(course, slot, course.schedule.indexOf(slot))}
+                            />
 
                             {/* Free Period Indicator */}
                             {freePeriods.some(fp => fp.start === slot.end) && (

@@ -92,7 +92,7 @@ export async function POST(request) {
               if (existingSlot.day === slot.day) {
                 const existingStart = timeToMinutes(existingSlot.start);
                 const existingEnd = timeToMinutes(existingSlot.end);
-                
+
                 if (checkOverlap(newStart, newEnd, existingStart, existingEnd)) {
                   return NextResponse.json({
                     success: false,
@@ -217,6 +217,59 @@ export async function PUT(request) {
         assignment.grade = grade;
         writeTimetable(data);
         return NextResponse.json({ success: true, message: 'Grade updated' });
+      }
+
+      default:
+        return NextResponse.json({ success: false, error: 'Invalid operation type' }, { status: 400 });
+    }
+  } catch (error) {
+    return NextResponse.json({ success: false, error: error.message }, { status: 500 });
+  }
+}
+
+// DELETE: Remove operations
+export async function DELETE(request) {
+  try {
+    const body = await request.json();
+    const { type } = body;
+    const data = readTimetable();
+
+    switch (type) {
+      case 'delete_slot': {
+        const { semesterId, courseId, slotIndex } = body;
+        const semester = data.semesters.find(s => s.id === semesterId);
+        if (!semester) {
+          return NextResponse.json({ success: false, error: 'Semester not found' }, { status: 404 });
+        }
+        const course = semester.courses.find(c => c.id === courseId);
+        if (!course) {
+          return NextResponse.json({ success: false, error: 'Course not found' }, { status: 404 });
+        }
+        if (slotIndex < 0 || slotIndex >= course.schedule.length) {
+          return NextResponse.json({ success: false, error: 'Invalid slot index' }, { status: 400 });
+        }
+        course.schedule.splice(slotIndex, 1);
+        writeTimetable(data);
+        return NextResponse.json({ success: true, message: 'Slot deleted' });
+      }
+
+      case 'delete_assignment': {
+        const { semesterId, courseId, assignmentId } = body;
+        const semester = data.semesters.find(s => s.id === semesterId);
+        if (!semester) {
+          return NextResponse.json({ success: false, error: 'Semester not found' }, { status: 404 });
+        }
+        const course = semester.courses.find(c => c.id === courseId);
+        if (!course) {
+          return NextResponse.json({ success: false, error: 'Course not found' }, { status: 404 });
+        }
+        const assignmentIndex = course.assignments.findIndex(a => a.id === assignmentId);
+        if (assignmentIndex === -1) {
+          return NextResponse.json({ success: false, error: 'Assignment not found' }, { status: 404 });
+        }
+        course.assignments.splice(assignmentIndex, 1);
+        writeTimetable(data);
+        return NextResponse.json({ success: true, message: 'Assignment deleted' });
       }
 
       default:

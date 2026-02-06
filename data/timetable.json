@@ -12,13 +12,6 @@
           "officeHours": "Wed 3-5 PM",
           "schedule": [
             {
-              "day": "Monday",
-              "start": "09:00",
-              "end": "10:00",
-              "room": "B201",
-              "status": "active"
-            },
-            {
               "day": "Wednesday",
               "start": "09:00",
               "end": "10:00",
@@ -30,6 +23,13 @@
               "start": "09:00",
               "end": "10:00",
               "room": "B201",
+              "status": "active"
+            },
+            {
+              "day": "Tuesday",
+              "start": "09:00",
+              "end": "10:00",
+              "room": "sdfs",
               "status": "active"
             }
           ],
@@ -48,6 +48,14 @@
               "description": "Implement inorder, preorder, and postorder traversal",
               "dueDate": "2026-02-10",
               "submitted": true,
+              "grade": null
+            },
+            {
+              "id": "a1770381034451",
+              "title": "rag systems ",
+              "description": "Just solve and sumbit",
+              "dueDate": "2026-02-19",
+              "submitted": false,
               "grade": null
             }
           ],
@@ -83,6 +91,13 @@
               "start": "10:00",
               "end": "11:30",
               "room": "A305",
+              "status": "active"
+            },
+            {
+              "day": "Friday",
+              "start": "08:00",
+              "end": "09:00",
+              "room": "b23",
               "status": "active"
             }
           ],
@@ -120,13 +135,6 @@
           "officeHours": "Mon 1-3 PM",
           "schedule": [
             {
-              "day": "Monday",
-              "start": "11:00",
-              "end": "12:00",
-              "room": "C101",
-              "status": "active"
-            },
-            {
               "day": "Wednesday",
               "start": "11:00",
               "end": "12:00",
@@ -138,6 +146,13 @@
               "start": "11:00",
               "end": "12:00",
               "room": "C101",
+              "status": "active"
+            },
+            {
+              "day": "Monday",
+              "start": "09:00",
+              "end": "10:00",
+              "room": "b209",
               "status": "active"
             }
           ],
@@ -216,6 +231,16 @@
               "max": 100
             }
           ]
+        },
+        {
+          "id": "c1770381463701",
+          "code": "sehaj",
+          "title": "sehaj",
+          "professor": "sehaj",
+          "officeHours": "sehaj",
+          "schedule": [],
+          "assignments": [],
+          "grades": []
         }
       ]
     },

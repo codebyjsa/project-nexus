@@ -1,6 +1,6 @@
 'use client';
 
-export default function ClassSlot({ slot, course }) {
+export default function ClassSlot({ slot, course, onEdit }) {
     const getStatusColor = (status) => {
         switch (status) {
             case 'cancelled':
@@ -24,6 +24,17 @@ export default function ClassSlot({ slot, course }) {
                 slot.status
             )}`}
         >
+            {/* Edit Button (shows on hover) */}
+            {onEdit && (
+                <button
+                    onClick={onEdit}
+                    className="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity duration-200 p-2 bg-gray-800/90 hover:bg-gray-700 rounded-[12px] text-gray-300 hover:text-white z-10"
+                    title="Edit slot"
+                >
+                    ✏️
+                </button>
+            )}
+
             {/* Course Code */}
             <div className="flex items-start justify-between mb-2">
                 <h3 className="text-lg font-semibold text-white">{course.code}</h3>
